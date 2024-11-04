@@ -1,0 +1,170 @@
+[gd_scene load_steps=12 format=3 uid="uid://bkhomsbxxw5vm"]
+
+[ext_resource type="Texture2D" uid="uid://bgfu2i1xhdl74" path="res://Assets/Backgrounds/tutorial/7.png" id="1_kc3gx"]
+[ext_resource type="Script" path="res://Assets/Scripts/start_game.gd" id="1_r5wa6"]
+[ext_resource type="FontFile" uid="uid://c7x58lu1meebs" path="res://Assets/fonts/Kenney Pixel.ttf" id="2_25nwk"]
+[ext_resource type="FontFile" uid="uid://dgevq8w7bcym2" path="res://Assets/fonts/Kenney Blocks.ttf" id="3_0o1s4"]
+[ext_resource type="Texture2D" uid="uid://brparnkmgtbbi" path="res://Assets/resources/unimag.png" id="4_b0dcs"]
+[ext_resource type="Texture2D" uid="uid://byuju0oukprxu" path="res://Assets/resources/IE.png" id="5_cxh0w"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h6yfx"]
+bg_color = Color(0.964706, 0.337255, 0.568627, 1)
+border_width_bottom = 3
+border_color = Color(0, 0.65098, 0.862745, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tm0ar"]
+border_width_bottom = 3
+border_color = Color(0, 0.65098, 0.862745, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p7v7a"]
+bg_color = Color(0.964706, 0.337255, 0.568627, 1)
+border_width_bottom = 3
+border_color = Color(0, 0.65098, 0.862745, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x3agt"]
+bg_color = Color(0.964706, 0.337255, 0.568627, 1)
+border_width_bottom = 3
+border_color = Color(0, 0.65098, 0.862745, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_debea"]
+bg_color = Color(0.814304, 0.360801, 0.9785, 1)
+border_width_bottom = 3
+border_color = Color(0.697491, 0.00140022, 0.83769, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[node name="StartGame" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_r5wa6")
+
+[node name="Background" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_right = 1043.0
+offset_bottom = 573.0
+texture = ExtResource("1_kc3gx")
+expand_mode = 1
+
+[node name="unimag" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 954.0
+offset_top = 2.0
+offset_right = 1041.0
+offset_bottom = 85.0
+texture = ExtResource("4_b0dcs")
+expand_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -136.5
+offset_right = 273.0
+offset_bottom = 136.5
+grow_vertical = 2
+
+[node name="play" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_25nwk")
+theme_override_font_sizes/font_size = 60
+theme_override_styles/focus = SubResource("StyleBoxFlat_h6yfx")
+theme_override_styles/hover = SubResource("StyleBoxFlat_tm0ar")
+text = "JUGAR"
+
+[node name="options" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_25nwk")
+theme_override_font_sizes/font_size = 60
+theme_override_styles/focus = SubResource("StyleBoxFlat_p7v7a")
+theme_override_styles/hover = SubResource("StyleBoxFlat_tm0ar")
+text = "OPCIONES"
+
+[node name="quit" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_25nwk")
+theme_override_font_sizes/font_size = 60
+theme_override_styles/focus = SubResource("StyleBoxFlat_x3agt")
+theme_override_styles/hover = SubResource("StyleBoxFlat_tm0ar")
+text = "SALIR"
+
+[node name="sure" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_25nwk")
+theme_override_font_sizes/font_size = 60
+theme_override_styles/focus = SubResource("StyleBoxFlat_debea")
+text = "CONFIRMAR
+"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -399.0
+offset_top = -80.0
+offset_right = 1.0
+offset_bottom = 8.0
+grow_horizontal = 0
+grow_vertical = 0
+metadata/_edit_group_ = true
+
+[node name="uni" type="Label" parent="VBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.356863, 0.886275, 1, 1)
+theme_override_fonts/font = ExtResource("3_0o1s4")
+theme_override_font_sizes/font_size = 25
+text = "UNIMAGDALENA
+"
+horizontal_alignment = 2
+
+[node name="elec" type="Label" parent="VBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(2.02149e-06, 0.48061, 0.803245, 1)
+theme_override_colors/font_shadow_color = Color(0.265361, 0.265361, 0.265361, 1)
+theme_override_fonts/font = ExtResource("3_0o1s4")
+theme_override_font_sizes/font_size = 25
+text = "INGENIERIA ELECTRONICA
+"
+horizontal_alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 864.0
+offset_top = 1.0
+offset_right = 951.0
+offset_bottom = 88.0
+texture = ExtResource("5_cxh0w")
+expand_mode = 1
+
+[connection signal="pressed" from="VBoxContainer/play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="VBoxContainer/options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="VBoxContainer/quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="VBoxContainer/sure" to="." method="_on_sure_pressed"]

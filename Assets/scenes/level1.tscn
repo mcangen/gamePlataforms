@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://d1l0f2gyixvqf"]
+
+[ext_resource type="Texture2D" uid="uid://c2n4iqvy5uerw" path="res://Assets/Backgrounds/mundo1/7.png" id="1_6kwuf"]
+[ext_resource type="Script" path="res://Assets/Scripts/level_1.gd" id="1_8xjep"]
+[ext_resource type="PackedScene" uid="uid://b2ovpkf6jfoit" path="res://Assets/scenes/character.tscn" id="1_xo5wy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fg1fl"]
+size = Vector2(1040, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pbskb"]
+size = Vector2(22, 262)
+
+[node name="Mundo" type="Node2D"]
+script = ExtResource("1_8xjep")
+
+[node name="Background" type="TextureRect" parent="."]
+texture_filter = 1
+offset_right = 1040.0
+offset_bottom = 585.0
+texture = ExtResource("1_6kwuf")
+expand_mode = 1
+
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="."]
+position = Vector2(68, 529)
+
+[node name="Sprite2D" type="Sprite2D" parent="AnimatableBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D"]
+position = Vector2(451, 50)
+shape = SubResource("RectangleShape2D_fg1fl")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="AnimatableBody2D"]
+position = Vector2(-79, -90)
+shape = SubResource("RectangleShape2D_pbskb")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="AnimatableBody2D"]
+position = Vector2(983, -89)
+shape = SubResource("RectangleShape2D_pbskb")
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("1_xo5wy")]
+position = Vector2(372, 543)
