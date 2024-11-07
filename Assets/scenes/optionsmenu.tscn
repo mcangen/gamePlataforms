@@ -1,10 +1,15 @@
-[gd_scene load_steps=12 format=3 uid="uid://cev3wbl4o1nxq"]
+[gd_scene load_steps=17 format=3 uid="uid://cev3wbl4o1nxq"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/optionsmenu.gd" id="1_eaafn"]
-[ext_resource type="Texture2D" uid="uid://clf7srvjetr64" path="res://Assets/Backgrounds/looby/7.png" id="2_lxw2t"]
+[ext_resource type="Script" path="res://Assets/Scripts/parallax_background.gd" id="2_gpr6e"]
+[ext_resource type="Texture2D" uid="uid://cb7ra4n35a6ok" path="res://Assets/Backgrounds/looby/1.png" id="3_88ifa"]
 [ext_resource type="FontFile" uid="uid://c7x58lu1meebs" path="res://Assets/fonts/Kenney Pixel.ttf" id="3_o1wqp"]
+[ext_resource type="Texture2D" uid="uid://dvawossu86sc" path="res://Assets/Backgrounds/looby/2.png" id="4_gy0um"]
 [ext_resource type="AudioStream" uid="uid://c14nf0ceuroum" path="res://Assets/resources/soundBg.mp3" id="4_la3tw"]
 [ext_resource type="FontFile" uid="uid://qg4eo7ybdnhr" path="res://Assets/fonts/Kenney Mini.ttf" id="5_cdkyf"]
+[ext_resource type="Texture2D" uid="uid://d2o7t0ls18bbr" path="res://Assets/Backgrounds/looby/3.png" id="5_nah32"]
+[ext_resource type="Texture2D" uid="uid://d4c17h638ic2i" path="res://Assets/Backgrounds/looby/4.png" id="6_cbjpc"]
+[ext_resource type="Texture2D" uid="uid://bq3ahgajgj7n8" path="res://Assets/Backgrounds/looby/5.png" id="7_krjak"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_acyah"]
 bg_color = Color(0.530477, 0.696568, 0.998415, 1)
@@ -64,13 +69,65 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_eaafn")
 
-[node name="background" type="TextureRect" parent="."]
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+script = ExtResource("2_gpr6e")
+velocidad = 15
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 texture_filter = 1
-layout_mode = 0
-offset_right = 1045.0
-offset_bottom = 588.0
-texture = ExtResource("2_lxw2t")
-expand_mode = 1
+motion_scale = Vector2(0.2, 0.2)
+motion_mirroring = Vector2(1040, 0)
+
+[node name="1" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+texture_filter = 1
+scale = Vector2(1.80556, 1.80556)
+texture = ExtResource("3_88ifa")
+centered = false
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+texture_filter = 1
+motion_scale = Vector2(0.6, 0.6)
+motion_mirroring = Vector2(1040, 0)
+
+[node name="2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+texture_filter = 1
+position = Vector2(2, 24)
+scale = Vector2(1.80247, 1.80247)
+texture = ExtResource("4_gy0um")
+centered = false
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+texture_filter = 1
+motion_scale = Vector2(0.8, 0.8)
+motion_mirroring = Vector2(1040, 0)
+
+[node name="3" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
+texture_filter = 1
+position = Vector2(520.111, 327)
+scale = Vector2(1.80247, 1.80247)
+texture = ExtResource("5_nah32")
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
+texture_filter = 1
+motion_scale = Vector2(1.2, 1.2)
+motion_mirroring = Vector2(1040, 0)
+
+[node name="4" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer4"]
+texture_filter = 1
+position = Vector2(520.111, 278)
+scale = Vector2(1.80247, 1.80247)
+texture = ExtResource("6_cbjpc")
+
+[node name="ParallaxLayer5" type="ParallaxLayer" parent="ParallaxBackground"]
+texture_filter = 1
+motion_scale = Vector2(1.5, 1.5)
+motion_mirroring = Vector2(1040, 0)
+
+[node name="5" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer5"]
+texture_filter = 1
+position = Vector2(521, 278.5)
+scale = Vector2(1.80556, 1.80556)
+texture = ExtResource("7_krjak")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 texture_filter = 1
