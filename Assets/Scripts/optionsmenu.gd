@@ -3,12 +3,14 @@ extends Control
 @onready var volume_slider = $HSlider
 @onready var audio_player = $AudioStreamPlayer2D
 @onready var mute_button = $VBoxContainer/muteButton
+@onready var fade = $ColorRect/AnimationPlayer
 
 # Variable para almacenar el estado del volumen
 var is_muted: bool = false
 # Guardamos los botones en una lista para facilitar el manejo del foco
 var buttons: Array[Button] = []
-
+func _process(delta: float) -> void:
+	back()
 func _ready() -> void:
 	# Agregamos manualmente todos los hijos de VBoxContainer que son botones a la lista
 	for child in $VBoxContainer.get_children():
@@ -23,6 +25,7 @@ func _ready() -> void:
 	info_label.visible = false
 	volume_slider.visible = false
 	mute_button.visible = false
+	fade.play("fade_in")
 
 # Señales de los botones
 func _on_info_pressed() -> void:
@@ -77,5 +80,5 @@ func _unhandled_input(event: InputEvent) -> void:
 		_on_mute_button_pressed()
 
 func back():
-	if Input.is_action_pressed("enter"):
+	if Input.is_action_pressed("back"):
 		get_tree().change_scene_to_file("res://Assets/scenes/StartGame.tscn")

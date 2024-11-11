@@ -246,7 +246,7 @@ size = Vector2(53.5, 68.5)
 texture_filter = 1
 position = Vector2(398, 475)
 script = ExtResource("1_tp5xr")
-move_speed = 140.0
+move_speed = 160.0
 jump_speed = 400.0
 metadata/_edit_group_ = true
 
@@ -258,7 +258,6 @@ hframes = 6
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Sprite2D"]
 sprite_frames = SubResource("SpriteFrames_oro0f")
 animation = &"run"
-frame_progress = 0.00641329
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-276.75, -11.25)

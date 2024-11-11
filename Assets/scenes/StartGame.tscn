@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bkhomsbxxw5vm"]
+[gd_scene load_steps=25 format=3 uid="uid://bkhomsbxxw5vm"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/start_game.gd" id="1_r5wa6"]
 [ext_resource type="Script" path="res://Assets/Scripts/parallax_background.gd" id="2_5nk02"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://byuju0oukprxu" path="res://Assets/resources/IE.png" id="5_cxh0w"]
 [ext_resource type="Texture2D" uid="uid://cry57sc1o04n6" path="res://Assets/Backgrounds/tutorial/4.png" id="5_xtp77"]
 [ext_resource type="Texture2D" uid="uid://bgs652hx242a1" path="res://Assets/Backgrounds/tutorial/5.png" id="6_jf7ge"]
+[ext_resource type="PackedScene" uid="uid://dgkcsqoohvdre" path="res://Assets/scenes/mundo1/fade.tscn" id="12_ceg6y"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h6yfx"]
 bg_color = Color(0.964706, 0.337255, 0.568627, 1)
@@ -29,10 +30,24 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ssmb0"]
+bg_color = Color(0, 0, 0, 0.541176)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p7v7a"]
 bg_color = Color(0.964706, 0.337255, 0.568627, 1)
 border_width_bottom = 3
 border_color = Color(0, 0.65098, 0.862745, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rb44s"]
+bg_color = Color(0, 0, 0, 0.541176)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
@@ -47,6 +62,13 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8i0jb"]
+bg_color = Color(0, 0, 0, 0.541176)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_debea"]
 bg_color = Color(0.814304, 0.360801, 0.9785, 1)
 border_width_bottom = 3
@@ -55,6 +77,25 @@ corner_radius_top_left = 15
 corner_radius_top_right = 15
 corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5yesq"]
+bg_color = Color(0, 0, 0, 0.541176)
+border_width_bottom = 3
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_liyo1"]
+draw_center = false
+
+[sub_resource type="Animation" id="Animation_ahlxx"]
+resource_name = "font1"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_e5ko1"]
+_data = {
+"font1": SubResource("Animation_ahlxx")
+}
 
 [node name="StartGame" type="Control"]
 layout_mode = 3
@@ -135,16 +176,38 @@ offset_bottom = 85.0
 texture = ExtResource("4_b0dcs")
 expand_mode = 1
 
+[node name="electronica" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 864.0
+offset_top = 1.0
+offset_right = 951.0
+offset_bottom = 88.0
+texture = ExtResource("5_cxh0w")
+expand_mode = 1
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1042.0
+offset_bottom = 587.0
+color = Color(0, 0, 0, 0.490196)
+
+[node name="ColorRect" parent="." instance=ExtResource("12_ceg6y")]
+layout_mode = 0
+offset_left = 0.0
+offset_right = 1040.0
+
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
+offset_left = 33.0
 offset_top = -136.5
-offset_right = 273.0
+offset_right = 306.0
 offset_bottom = 136.5
 grow_vertical = 2
+metadata/_edit_group_ = true
 
 [node name="play" type="Button" parent="VBoxContainer"]
 layout_mode = 2
@@ -152,6 +215,7 @@ theme_override_fonts/font = ExtResource("2_25nwk")
 theme_override_font_sizes/font_size = 60
 theme_override_styles/focus = SubResource("StyleBoxFlat_h6yfx")
 theme_override_styles/hover = SubResource("StyleBoxFlat_tm0ar")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ssmb0")
 text = "JUGAR"
 
 [node name="options" type="Button" parent="VBoxContainer"]
@@ -160,6 +224,7 @@ theme_override_fonts/font = ExtResource("2_25nwk")
 theme_override_font_sizes/font_size = 60
 theme_override_styles/focus = SubResource("StyleBoxFlat_p7v7a")
 theme_override_styles/hover = SubResource("StyleBoxFlat_tm0ar")
+theme_override_styles/normal = SubResource("StyleBoxFlat_rb44s")
 text = "OPCIONES"
 
 [node name="quit" type="Button" parent="VBoxContainer"]
@@ -168,6 +233,7 @@ theme_override_fonts/font = ExtResource("2_25nwk")
 theme_override_font_sizes/font_size = 60
 theme_override_styles/focus = SubResource("StyleBoxFlat_x3agt")
 theme_override_styles/hover = SubResource("StyleBoxFlat_tm0ar")
+theme_override_styles/normal = SubResource("StyleBoxFlat_8i0jb")
 text = "SALIR"
 
 [node name="sure" type="Button" parent="VBoxContainer"]
@@ -175,6 +241,7 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("2_25nwk")
 theme_override_font_sizes/font_size = 60
 theme_override_styles/focus = SubResource("StyleBoxFlat_debea")
+theme_override_styles/normal = SubResource("StyleBoxFlat_5yesq")
 text = "CONFIRMAR
 "
 
@@ -186,10 +253,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -399.0
-offset_top = -80.0
-offset_right = 1.0
-offset_bottom = 8.0
+offset_left = -416.0
+offset_top = -93.0
+offset_right = -16.0
+offset_bottom = -5.0
 grow_horizontal = 0
 grow_vertical = 0
 metadata/_edit_group_ = true
@@ -213,14 +280,51 @@ text = "INGENIERIA ELECTRONICA
 "
 horizontal_alignment = 2
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+texture_filter = 1
 layout_mode = 0
-offset_left = 864.0
-offset_top = 1.0
-offset_right = 951.0
-offset_bottom = 88.0
-texture = ExtResource("5_cxh0w")
-expand_mode = 1
+offset_left = 345.0
+offset_top = 82.0
+offset_right = 1033.0
+offset_bottom = 435.0
+theme_override_colors/default_color = Color(0.709804, 0, 1, 1)
+theme_override_fonts/normal_font = ExtResource("2_25nwk")
+theme_override_font_sizes/normal_font_size = 210
+theme_override_styles/normal = SubResource("StyleBoxFlat_liyo1")
+text = "MONEY PLATFORM
+"
+scroll_active = false
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="RichTextLabel"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = -10.0
+offset_right = 698.0
+offset_bottom = 343.0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_fonts/normal_font = ExtResource("2_25nwk")
+theme_override_font_sizes/normal_font_size = 210
+theme_override_styles/normal = SubResource("StyleBoxFlat_liyo1")
+text = "MONEY PLATFORM
+"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="RichTextLabel"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = -5.0
+offset_right = 693.0
+offset_bottom = 348.0
+theme_override_colors/default_color = Color(1, 0.932956, 0.95927, 1)
+theme_override_fonts/normal_font = ExtResource("2_25nwk")
+theme_override_font_sizes/normal_font_size = 210
+theme_override_styles/normal = SubResource("StyleBoxFlat_liyo1")
+text = "MONEY PLATFORM
+"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="RichTextLabel"]
+libraries = {
+"": SubResource("AnimationLibrary_e5ko1")
+}
 
 [connection signal="pressed" from="VBoxContainer/play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="VBoxContainer/options" to="." method="_on_options_pressed"]

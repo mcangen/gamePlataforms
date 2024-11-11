@@ -1,0 +1,115 @@
+[gd_scene load_steps=10 format=3 uid="uid://dv7jkpxl5h175"]
+
+[ext_resource type="FontFile" uid="uid://c7x58lu1meebs" path="res://Assets/fonts/Kenney Pixel.ttf" id="1_1wlp5"]
+[ext_resource type="Script" path="res://Assets/Scripts/pause.gd" id="1_axvbi"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vpxh1"]
+bg_color = Color(0.530477, 0.696568, 0.998415, 1)
+border_width_bottom = 3
+border_color = Color(0, 0.65098, 0.862745, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_db0ve"]
+border_width_bottom = 3
+border_color = Color(0, 0.65098, 0.862745, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vpw4s"]
+bg_color = Color(0, 0, 0, 0.541176)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g4lmr"]
+bg_color = Color(0.529412, 0.698039, 1, 1)
+border_width_bottom = 3
+border_color = Color(0, 0.65098, 0.862745, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ax46x"]
+bg_color = Color(0, 0, 0, 0.541176)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vumnk"]
+bg_color = Color(0.529412, 0.698039, 1, 1)
+border_width_bottom = 3
+border_color = Color(0, 0.65098, 0.862745, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tglya"]
+bg_color = Color(0, 0, 0, 0.541176)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="paused" type="Control" groups=["PauseMenu"]]
+process_mode = 3
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_axvbi")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1044.0
+offset_bottom = 569.0
+color = Color(0, 0, 0, 0.321569)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 377.0
+offset_top = 186.0
+offset_right = 627.0
+offset_bottom = 332.0
+size_flags_horizontal = 4
+metadata/_edit_group_ = true
+
+[node name="volver" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_1wlp5")
+theme_override_font_sizes/font_size = 60
+theme_override_styles/focus = SubResource("StyleBoxFlat_vpxh1")
+theme_override_styles/hover = SubResource("StyleBoxFlat_db0ve")
+theme_override_styles/normal = SubResource("StyleBoxFlat_vpw4s")
+text = "VOLVER"
+
+[node name="repetir" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_1wlp5")
+theme_override_font_sizes/font_size = 60
+theme_override_styles/focus = SubResource("StyleBoxFlat_g4lmr")
+theme_override_styles/hover = SubResource("StyleBoxFlat_db0ve")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ax46x")
+text = "REPETIR"
+
+[node name="salir" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_1wlp5")
+theme_override_font_sizes/font_size = 60
+theme_override_styles/focus = SubResource("StyleBoxFlat_vumnk")
+theme_override_styles/hover = SubResource("StyleBoxFlat_db0ve")
+theme_override_styles/normal = SubResource("StyleBoxFlat_tglya")
+text = "SALIR
+"
+
+[connection signal="pressed" from="VBoxContainer/volver" to="." method="_on_volver_pressed"]
+[connection signal="pressed" from="VBoxContainer/repetir" to="." method="_on_repetir_pressed"]
+[connection signal="pressed" from="VBoxContainer/salir" to="." method="_on_salir_pressed"]

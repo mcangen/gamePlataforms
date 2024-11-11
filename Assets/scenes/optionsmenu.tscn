@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cev3wbl4o1nxq"]
+[gd_scene load_steps=22 format=3 uid="uid://cev3wbl4o1nxq"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/optionsmenu.gd" id="1_eaafn"]
 [ext_resource type="Script" path="res://Assets/Scripts/parallax_background.gd" id="2_gpr6e"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://d2o7t0ls18bbr" path="res://Assets/Backgrounds/looby/3.png" id="5_nah32"]
 [ext_resource type="Texture2D" uid="uid://d4c17h638ic2i" path="res://Assets/Backgrounds/looby/4.png" id="6_cbjpc"]
 [ext_resource type="Texture2D" uid="uid://bq3ahgajgj7n8" path="res://Assets/Backgrounds/looby/5.png" id="7_krjak"]
+[ext_resource type="PackedScene" uid="uid://dgkcsqoohvdre" path="res://Assets/scenes/mundo1/fade.tscn" id="11_1h867"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_acyah"]
 bg_color = Color(0.530477, 0.696568, 0.998415, 1)
@@ -28,10 +29,24 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wm3g3"]
+bg_color = Color(0, 0, 0, 0.541176)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v5lrm"]
 bg_color = Color(0.529412, 0.698039, 1, 1)
 border_width_bottom = 3
 border_color = Color(0, 0.65098, 0.862745, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mddbg"]
+bg_color = Color(0, 0, 0, 0.541176)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
@@ -46,11 +61,27 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5yhv7"]
+bg_color = Color(0, 0, 0, 0.541176)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x5kld"]
+bg_color = Color(0, 0, 0, 0.541176)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7sxir"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_66h8s"]
 bg_color = Color(0.47451, 0.647059, 0.913725, 0.694118)
+border_width_left = 10
+border_color = Color(0.8, 0.8, 0.8, 0)
 corner_radius_top_left = 15
 corner_radius_top_right = 15
 corner_radius_bottom_right = 15
@@ -61,6 +92,7 @@ expand_margin_right = 5.0
 expand_margin_bottom = 5.0
 
 [node name="Optionsmenu" type="Control"]
+texture_filter = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -129,16 +161,23 @@ position = Vector2(521, 278.5)
 scale = Vector2(1.80556, 1.80556)
 texture = ExtResource("7_krjak")
 
+[node name="ColorRect" parent="." instance=ExtResource("11_1h867")]
+layout_mode = 0
+offset_left = 0.0
+offset_right = 1040.0
+
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_top = -136.0
-offset_right = 309.0
-offset_bottom = 137.0
+offset_left = 38.0
+offset_top = -139.0
+offset_right = 347.0
+offset_bottom = 134.0
 grow_vertical = 2
+metadata/_edit_group_ = true
 
 [node name="info" type="Button" parent="VBoxContainer"]
 layout_mode = 2
@@ -146,6 +185,7 @@ theme_override_fonts/font = ExtResource("3_o1wqp")
 theme_override_font_sizes/font_size = 60
 theme_override_styles/focus = SubResource("StyleBoxFlat_acyah")
 theme_override_styles/hover = SubResource("StyleBoxFlat_hpuaq")
+theme_override_styles/normal = SubResource("StyleBoxFlat_wm3g3")
 text = "INFO"
 
 [node name="volumen" type="Button" parent="VBoxContainer"]
@@ -154,6 +194,7 @@ theme_override_fonts/font = ExtResource("3_o1wqp")
 theme_override_font_sizes/font_size = 60
 theme_override_styles/focus = SubResource("StyleBoxFlat_v5lrm")
 theme_override_styles/hover = SubResource("StyleBoxFlat_hpuaq")
+theme_override_styles/normal = SubResource("StyleBoxFlat_mddbg")
 text = "VOLUMEN"
 
 [node name="back" type="Button" parent="VBoxContainer"]
@@ -162,8 +203,8 @@ theme_override_fonts/font = ExtResource("3_o1wqp")
 theme_override_font_sizes/font_size = 60
 theme_override_styles/focus = SubResource("StyleBoxFlat_paay4")
 theme_override_styles/hover = SubResource("StyleBoxFlat_hpuaq")
-text = "BACK
-"
+theme_override_styles/normal = SubResource("StyleBoxFlat_5yhv7")
+text = "VOLVER"
 
 [node name="muteButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
@@ -171,7 +212,8 @@ theme_override_fonts/font = ExtResource("3_o1wqp")
 theme_override_font_sizes/font_size = 60
 theme_override_styles/focus = SubResource("StyleBoxFlat_paay4")
 theme_override_styles/hover = SubResource("StyleBoxFlat_hpuaq")
-text = "AJUSTAR VOL"
+theme_override_styles/normal = SubResource("StyleBoxFlat_x5kld")
+text = "DESACTIVAR VOL"
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_la3tw")
@@ -187,13 +229,13 @@ theme_override_styles/slider = SubResource("StyleBoxFlat_7sxir")
 [node name="infoLabel" type="Label" parent="."]
 texture_filter = 1
 layout_mode = 0
-offset_left = 315.0
+offset_left = 350.0
 offset_top = 65.0
-offset_right = 443.0
+offset_right = 478.0
 offset_bottom = 90.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("5_cdkyf")
-theme_override_font_sizes/font_size = 17
+theme_override_font_sizes/font_size = 16
 theme_override_styles/normal = SubResource("StyleBoxFlat_66h8s")
 
 [connection signal="pressed" from="VBoxContainer/info" to="." method="_on_info_pressed"]

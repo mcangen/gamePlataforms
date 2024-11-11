@@ -1,0 +1,75 @@
+[gd_scene load_steps=7 format=3 uid="uid://c4eh06wppa8u0"]
+
+[ext_resource type="Script" path="res://Assets/Scripts/exitmatch.gd" id="1_d7io1"]
+[ext_resource type="FontFile" uid="uid://c7x58lu1meebs" path="res://Assets/fonts/Kenney Pixel.ttf" id="2_igg5k"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3gn38"]
+bg_color = Color(0.780392, 0.486275, 1, 1)
+border_width_bottom = 3
+border_color = Color(0.227451, 0.678431, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hthi4"]
+bg_color = Color(0, 0, 0, 0.541176)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wiajp"]
+bg_color = Color(0.227451, 0.678431, 1, 1)
+border_width_bottom = 3
+border_color = Color(0.780877, 0.484586, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mvwnt"]
+bg_color = Color(0, 0, 0, 0.541176)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="Exitmatch" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_d7io1")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+texture_filter = 1
+offset_left = 377.0
+offset_top = 186.0
+offset_right = 627.0
+offset_bottom = 332.0
+size_flags_horizontal = 4
+metadata/_edit_group_ = true
+
+[node name="reintentar" type="Button" parent="VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_igg5k")
+theme_override_font_sizes/font_size = 60
+theme_override_styles/focus = SubResource("StyleBoxFlat_3gn38")
+theme_override_styles/normal = SubResource("StyleBoxFlat_hthi4")
+text = "REINTENTAR"
+
+[node name="salir" type="Button" parent="VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_igg5k")
+theme_override_font_sizes/font_size = 60
+theme_override_styles/focus = SubResource("StyleBoxFlat_wiajp")
+theme_override_styles/normal = SubResource("StyleBoxFlat_mvwnt")
+text = "SALIR
+"
+
+[connection signal="pressed" from="VBoxContainer/salir" to="." method="_on_salir_pressed"]

@@ -1,0 +1,85 @@
+[gd_scene load_steps=8 format=3 uid="uid://cwpqxhi3dkyw"]
+
+[ext_resource type="Texture2D" uid="uid://2dhc0i5dt0cg" path="res://Assets/resources/sprites/floatingIslands/islands_0.png" id="2_crf2j"]
+[ext_resource type="Texture2D" uid="uid://3st7hdury1l7" path="res://Assets/resources/sprites/floatingIslands/islands_1.png" id="3_trlhm"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2qn0e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_crf2j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_trlhm")
+}],
+"loop": true,
+"name": &"disapear",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_05utq"]
+size = Vector2(98, 101)
+
+[sub_resource type="Animation" id="Animation_0ocnt"]
+resource_name = "moviment"
+length = 1.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.433333, 0.666667, 0.866667, 1.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(113, 567), Vector2(118, 567), Vector2(125.099, 567), Vector2(130.373, 567), Vector2(123.488, 567), Vector2(112.446, 567)]
+}
+
+[sub_resource type="Animation" id="Animation_uevsg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(113, 567)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sptit"]
+_data = {
+"RESET": SubResource("Animation_uevsg"),
+"moviment": SubResource("Animation_0ocnt")
+}
+
+[node name="Resourcelevel" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+texture_filter = 1
+position = Vector2(113, 567)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+texture = ExtResource("2_crf2j")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="StaticBody2D"]
+sprite_frames = SubResource("SpriteFrames_2qn0e")
+animation = &"disapear"
+frame_progress = 0.238094
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, -13.5)
+shape = SubResource("RectangleShape2D_05utq")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="StaticBody2D"]
+libraries = {
+"": SubResource("AnimationLibrary_sptit")
+}
