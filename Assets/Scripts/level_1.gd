@@ -15,7 +15,7 @@ func _physics_process(delta: float) -> void:
 func buttons() -> void:
 	if Input.is_action_just_pressed("back"): 
 		toggle_pause()
-	$Resourcelevel/StaticBody2D/AnimationPlayer.play("moviment")
+	## $IslandSpawner/Island/AnimationPlayer.play("moviment")
 
 func toggle_pause() -> void:
 	get_tree().paused = not get_tree().paused

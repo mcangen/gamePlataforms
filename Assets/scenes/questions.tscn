@@ -1,0 +1,213 @@
+[gd_scene load_steps=12 format=3 uid="uid://d0eem5acl4iii"]
+
+[ext_resource type="Script" path="res://Assets/Scripts/questions.gd" id="1_7eds3"]
+[ext_resource type="FontFile" uid="uid://c7x58lu1meebs" path="res://Assets/fonts/Kenney Pixel.ttf" id="2_kysej"]
+[ext_resource type="PackedScene" uid="uid://bhpnwqi0kg7m8" path="res://Assets/scenes/fadequestion.tscn" id="3_v6e0x"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2ev4t"]
+bg_color = Color(1, 1, 1, 1)
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ypylj"]
+bg_color = Color(0.964706, 0.337255, 0.568627, 1)
+border_width_bottom = 3
+border_color = Color(0, 0.65098, 0.862745, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xkpmu"]
+border_width_bottom = 3
+border_color = Color(0, 0.65098, 0.862745, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bqn4r"]
+bg_color = Color(0.921569, 0.219608, 0.427451, 1)
+border_width_bottom = 3
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_41d88"]
+bg_color = Color(0.964706, 0.337255, 0.568627, 1)
+border_width_bottom = 3
+border_color = Color(0, 0.65098, 0.862745, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_snfwx"]
+bg_color = Color(0.921569, 0.219608, 0.427451, 1)
+border_width_bottom = 3
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_364r7"]
+bg_color = Color(0.964706, 0.337255, 0.568627, 1)
+border_width_bottom = 3
+border_color = Color(0, 0.65098, 0.862745, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_03v8w"]
+bg_color = Color(0.921569, 0.219608, 0.427451, 1)
+border_width_bottom = 3
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="Questions" type="Node2D"]
+script = ExtResource("1_7eds3")
+
+[node name="Node" type="Node2D" parent="."]
+
+[node name="question" type="RichTextLabel" parent="Node"]
+texture_filter = 1
+offset_left = 18.0
+offset_top = 139.0
+offset_right = 439.0
+offset_bottom = 466.0
+theme_override_colors/default_color = Color(0.921569, 0.219608, 0.427451, 1)
+theme_override_fonts/normal_font = ExtResource("2_kysej")
+theme_override_font_sizes/normal_font_size = 65
+theme_override_styles/normal = SubResource("StyleBoxFlat_2ev4t")
+text = "
+
+"
+scroll_active = false
+
+[node name="test" type="Label" parent="Node"]
+offset_left = 12.0
+offset_top = 462.0
+offset_right = 52.0
+offset_bottom = 485.0
+text = "
+"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Node"]
+texture_filter = 1
+offset_left = 9.0
+offset_top = 6.0
+offset_right = 834.0
+offset_bottom = 186.0
+theme_override_colors/default_color = Color(0.921569, 0.219608, 0.427451, 1)
+theme_override_fonts/normal_font = ExtResource("2_kysej")
+theme_override_font_sizes/normal_font_size = 90
+theme_override_styles/normal = SubResource("StyleBoxFlat_2ev4t")
+text = "RESPONDE Y SOBREVIVE!!!
+"
+scroll_active = false
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Node/RichTextLabel"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 4.0
+offset_top = -1.0
+offset_right = 829.0
+offset_bottom = 179.0
+theme_override_colors/default_color = Color(0.921569, 0.219608, 0.427451, 1)
+theme_override_fonts/normal_font = ExtResource("2_kysej")
+theme_override_font_sizes/normal_font_size = 90
+theme_override_styles/normal = SubResource("StyleBoxFlat_2ev4t")
+text = "RESPONDE Y SOBREVIVE!!!
+"
+scroll_active = false
+
+[node name="ColorRect" parent="Node" instance=ExtResource("3_v6e0x")]
+visible = false
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="Node"]
+texture_filter = 1
+offset_left = 193.0
+offset_top = 475.0
+offset_right = 1018.0
+offset_bottom = 655.0
+theme_override_colors/default_color = Color(0.921569, 0.219608, 0.427451, 1)
+theme_override_fonts/normal_font = ExtResource("2_kysej")
+theme_override_font_sizes/normal_font_size = 90
+theme_override_styles/normal = SubResource("StyleBoxFlat_2ev4t")
+text = "USA JOYSTICK DERECHO
+"
+scroll_active = false
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Node/RichTextLabel2"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 4.0
+offset_top = -1.0
+offset_right = 829.0
+offset_bottom = 179.0
+theme_override_colors/default_color = Color(0.921569, 0.219608, 0.427451, 1)
+theme_override_fonts/normal_font = ExtResource("2_kysej")
+theme_override_font_sizes/normal_font_size = 90
+theme_override_styles/normal = SubResource("StyleBoxFlat_2ev4t")
+text = "USA JOYSTICK DERECHO
+"
+scroll_active = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Node"]
+texture_filter = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 622.0
+offset_top = 212.0
+offset_right = 958.0
+offset_bottom = 548.0
+grow_vertical = 2
+metadata/_edit_group_ = true
+
+[node name="a" type="Button" parent="Node/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_kysej")
+theme_override_font_sizes/font_size = 60
+theme_override_styles/focus = SubResource("StyleBoxFlat_ypylj")
+theme_override_styles/hover = SubResource("StyleBoxFlat_xkpmu")
+theme_override_styles/normal = SubResource("StyleBoxFlat_bqn4r")
+text = "TEST"
+
+[node name="b" type="Button" parent="Node/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_kysej")
+theme_override_font_sizes/font_size = 60
+theme_override_styles/focus = SubResource("StyleBoxFlat_41d88")
+theme_override_styles/hover = SubResource("StyleBoxFlat_xkpmu")
+theme_override_styles/normal = SubResource("StyleBoxFlat_snfwx")
+text = "TEST
+"
+
+[node name="c" type="Button" parent="Node/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_kysej")
+theme_override_font_sizes/font_size = 60
+theme_override_styles/focus = SubResource("StyleBoxFlat_364r7")
+theme_override_styles/hover = SubResource("StyleBoxFlat_xkpmu")
+theme_override_styles/normal = SubResource("StyleBoxFlat_03v8w")
+text = "TEST
+"
+
+[node name="d" type="Button" parent="Node/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_kysej")
+theme_override_font_sizes/font_size = 60
+theme_override_styles/focus = SubResource("StyleBoxFlat_364r7")
+theme_override_styles/hover = SubResource("StyleBoxFlat_xkpmu")
+theme_override_styles/normal = SubResource("StyleBoxFlat_03v8w")
+text = "TEST
+"
+
+[connection signal="pressed" from="Node/VBoxContainer/a" to="." method="_on_a_pressed"]
+[connection signal="pressed" from="Node/VBoxContainer/b" to="." method="_on_b_pressed"]
+[connection signal="pressed" from="Node/VBoxContainer/c" to="." method="_on_c_pressed"]
+[connection signal="pressed" from="Node/VBoxContainer/d" to="." method="_on_d_pressed"]

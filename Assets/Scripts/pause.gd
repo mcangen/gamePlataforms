@@ -46,4 +46,6 @@ func _on_repetir_pressed() -> void:
 func _on_salir_pressed() -> void: 
 	get_tree().paused = false 
 	get_tree().change_scene_to_file("res://Assets/scenes/StartGame.tscn")
-	
+
+
+		

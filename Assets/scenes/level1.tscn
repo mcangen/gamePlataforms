@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://d1l0f2gyixvqf"]
+[gd_scene load_steps=17 format=3 uid="uid://d1l0f2gyixvqf"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/level_1.gd" id="1_8xjep"]
 [ext_resource type="PackedScene" uid="uid://b2ovpkf6jfoit" path="res://Assets/scenes/character.tscn" id="1_xo5wy"]
@@ -11,12 +11,18 @@
 [ext_resource type="PackedScene" uid="uid://dv7jkpxl5h175" path="res://Assets/scenes/mundo1/paused.tscn" id="6_2k75q"]
 [ext_resource type="Texture2D" uid="uid://cry57sc1o04n6" path="res://Assets/Backgrounds/tutorial/4.png" id="6_nnxs7"]
 [ext_resource type="Texture2D" uid="uid://bgs652hx242a1" path="res://Assets/Backgrounds/tutorial/5.png" id="7_j2bl1"]
+[ext_resource type="FontFile" uid="uid://fhninvb0lu8k" path="res://Assets/fonts/Kenney Mini Square.ttf" id="12_nudn1"]
+[ext_resource type="Script" path="res://Assets/Scripts/island_spawner.gd" id="12_vhxcc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fg1fl"]
 size = Vector2(1040, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pbskb"]
 size = Vector2(22, 262)
+
+[sub_resource type="LabelSettings" id="LabelSettings_sj15o"]
+font = ExtResource("12_nudn1")
+font_size = 32
 
 [node name="Mundo" type="Control"]
 layout_mode = 3
@@ -90,7 +96,7 @@ position = Vector2(68, 529)
 [node name="Sprite2D" type="Sprite2D" parent="AnimatableBody2D"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D"]
-position = Vector2(454, 130)
+position = Vector2(460, 98)
 shape = SubResource("RectangleShape2D_fg1fl")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="AnimatableBody2D"]
@@ -102,13 +108,16 @@ position = Vector2(983, -27)
 shape = SubResource("RectangleShape2D_pbskb")
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_xo5wy")]
-position = Vector2(372, 486)
+position = Vector2(382, 472)
 
-[node name="Resourcelevel" parent="." instance=ExtResource("4_7wpax")]
-offset_left = -22.0
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 888.0
 offset_top = 9.0
-offset_right = -22.0
-offset_bottom = 9.0
+offset_right = 1004.0
+offset_bottom = 49.0
+text = "SCORE :"
+label_settings = SubResource("LabelSettings_sj15o")
 
 [node name="ColorRect" parent="." instance=ExtResource("5_5x75c")]
 visible = false
@@ -118,3 +127,9 @@ offset_right = 1040.0
 
 [node name="paused" parent="." instance=ExtResource("6_2k75q")]
 visible = false
+
+[node name="IslandSpawner" type="Node2D" parent="."]
+script = ExtResource("12_vhxcc")
+island_scene = ExtResource("4_7wpax")
+
+[node name="Island" parent="IslandSpawner" instance=ExtResource("4_7wpax")]

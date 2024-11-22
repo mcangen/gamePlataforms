@@ -4,6 +4,7 @@ var buttons: Array[Button] = []
 
 @onready var exit_menu = $Exitmatch
 @onready var container_exit = $VBoxContainer
+@onready var fade = $ColorRect/AnimationPlayer
 
 func _ready() -> void:
 	for child in $VBoxContainer.get_children():
@@ -13,6 +14,7 @@ func _ready() -> void:
 
 	if buttons.size() > 0:
 		buttons[0].grab_focus()
+	fade.play("fade_in")
 		
 func _unhandled_input(event: InputEvent) -> void:
 	# Obtenemos el elemento actualmente enfocado
@@ -37,3 +39,10 @@ func _unhandled_input(event: InputEvent) -> void:
 func _on_salir_pressed() -> void:
 	get_tree().paused = false 
 	get_tree().change_scene_to_file("res://Assets/scenes/StartGame.tscn")
+
+
+func _on_reintentar_pressed() -> void:
+	get_tree().paused = false
+	#get_tree().reload_current_scene()
+	get_tree().change_scene_to_file("res://Assets/scenes/level1.tscn")
+	

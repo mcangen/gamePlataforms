@@ -1,7 +1,17 @@
-[gd_scene load_steps=7 format=3 uid="uid://c4eh06wppa8u0"]
+[gd_scene load_steps=18 format=3 uid="uid://c4eh06wppa8u0"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/exitmatch.gd" id="1_d7io1"]
 [ext_resource type="FontFile" uid="uid://c7x58lu1meebs" path="res://Assets/fonts/Kenney Pixel.ttf" id="2_igg5k"]
+[ext_resource type="Script" path="res://Assets/Scripts/parallax_background.gd" id="2_ppdh1"]
+[ext_resource type="Texture2D" uid="uid://cyrxw17pq08yw" path="res://Assets/Backgrounds/mundo4/1.png" id="3_p4j0n"]
+[ext_resource type="PackedScene" uid="uid://bhpnwqi0kg7m8" path="res://Assets/scenes/fadequestion.tscn" id="4_bqi6a"]
+[ext_resource type="FontFile" uid="uid://brsaoc3t1t2k0" path="res://Assets/fonts/Kenney Pixel Square.ttf" id="4_w1csx"]
+[ext_resource type="Texture2D" uid="uid://bcstg7exv2lqs" path="res://Assets/Backgrounds/mundo4/2.png" id="4_xmndk"]
+[ext_resource type="Texture2D" uid="uid://buuuekr0xlqlv" path="res://Assets/Backgrounds/mundo4/3.png" id="5_m6tqn"]
+[ext_resource type="Texture2D" uid="uid://vs8ssgno70by" path="res://Assets/Backgrounds/mundo4/4.png" id="6_ejlli"]
+[ext_resource type="Texture2D" uid="uid://dunhmaxqohrqx" path="res://Assets/Backgrounds/mundo4/5.png" id="7_m6luj"]
+[ext_resource type="Texture2D" uid="uid://4lniew5cg0l1" path="res://Assets/Backgrounds/mundo4/6.png" id="8_he6uh"]
+[ext_resource type="Texture2D" uid="uid://cq5kdh2k7v1g2" path="res://Assets/Backgrounds/mundo4/7.png" id="9_7uwco"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3gn38"]
 bg_color = Color(0.780392, 0.486275, 1, 1)
@@ -35,7 +45,13 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
+[sub_resource type="LabelSettings" id="LabelSettings_qdhxt"]
+font = ExtResource("4_w1csx")
+font_size = 80
+font_color = Color(0.560607, 0.00387626, 0.954685, 1)
+
 [node name="Exitmatch" type="Control"]
+texture_filter = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -44,12 +60,96 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_d7io1")
 
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+script = ExtResource("2_ppdh1")
+velocidad = 20
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+texture_filter = 1
+motion_scale = Vector2(0, 0)
+motion_mirroring = Vector2(1040, 0)
+
+[node name="1" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+texture_filter = 1
+scale = Vector2(1.80556, 1.80556)
+texture = ExtResource("3_p4j0n")
+centered = false
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+texture_filter = 1
+position = Vector2(-367, 4)
+motion_scale = Vector2(0.01, 0.01)
+motion_mirroring = Vector2(1040, 0)
+
+[node name="2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+texture_filter = 1
+position = Vector2(362, -9)
+scale = Vector2(1.80247, 1.80247)
+texture = ExtResource("4_xmndk")
+centered = false
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+texture_filter = 1
+motion_scale = Vector2(0.4, 0.4)
+motion_mirroring = Vector2(1040, 0)
+
+[node name="3" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
+texture_filter = 1
+position = Vector2(520.111, 291)
+scale = Vector2(1.80247, 1.80247)
+texture = ExtResource("5_m6tqn")
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
+texture_filter = 1
+motion_scale = Vector2(1.2, 1.2)
+motion_mirroring = Vector2(1040, 0)
+
+[node name="4" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer4"]
+texture_filter = 1
+position = Vector2(520.111, 278)
+scale = Vector2(1.80247, 1.80247)
+texture = ExtResource("6_ejlli")
+
+[node name="ParallaxLayer5" type="ParallaxLayer" parent="ParallaxBackground"]
+texture_filter = 1
+motion_scale = Vector2(1.5, 1.5)
+motion_mirroring = Vector2(1040, 0)
+
+[node name="5" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer5"]
+texture_filter = 1
+position = Vector2(521, 278.5)
+scale = Vector2(1.80556, 1.80556)
+texture = ExtResource("7_m6luj")
+
+[node name="ParallaxLayer6" type="ParallaxLayer" parent="ParallaxBackground"]
+texture_filter = 1
+motion_scale = Vector2(1.5, 1.5)
+motion_mirroring = Vector2(1040, 0)
+
+[node name="6" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer6"]
+texture_filter = 1
+position = Vector2(521, 278.5)
+scale = Vector2(1.80556, 1.80556)
+texture = ExtResource("8_he6uh")
+
+[node name="ParallaxLayer7" type="ParallaxLayer" parent="ParallaxBackground"]
+texture_filter = 1
+motion_scale = Vector2(1.5, 1.5)
+motion_mirroring = Vector2(1040, 0)
+
+[node name="7" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer7"]
+texture_filter = 1
+position = Vector2(521, 278.5)
+scale = Vector2(1.80556, 1.80556)
+texture = ExtResource("9_7uwco")
+
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 texture_filter = 1
-offset_left = 377.0
-offset_top = 186.0
-offset_right = 627.0
-offset_bottom = 332.0
+layout_mode = 0
+offset_left = 272.0
+offset_top = 204.0
+offset_right = 776.0
+offset_bottom = 468.0
 size_flags_horizontal = 4
 metadata/_edit_group_ = true
 
@@ -57,7 +157,7 @@ metadata/_edit_group_ = true
 texture_filter = 1
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_igg5k")
-theme_override_font_sizes/font_size = 60
+theme_override_font_sizes/font_size = 80
 theme_override_styles/focus = SubResource("StyleBoxFlat_3gn38")
 theme_override_styles/normal = SubResource("StyleBoxFlat_hthi4")
 text = "REINTENTAR"
@@ -66,10 +166,33 @@ text = "REINTENTAR"
 texture_filter = 1
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_igg5k")
-theme_override_font_sizes/font_size = 60
+theme_override_font_sizes/font_size = 80
 theme_override_styles/focus = SubResource("StyleBoxFlat_wiajp")
 theme_override_styles/normal = SubResource("StyleBoxFlat_mvwnt")
 text = "SALIR
 "
 
+[node name="Label" type="Label" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 304.0
+offset_top = 56.0
+offset_right = 724.0
+offset_bottom = 176.0
+text = "MORISTE"
+label_settings = SubResource("LabelSettings_qdhxt")
+
+[node name="Label" type="Label" parent="Label"]
+texture_filter = 1
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 424.0
+offset_bottom = 124.0
+text = "MORISTE"
+label_settings = SubResource("LabelSettings_qdhxt")
+
+[node name="ColorRect" parent="." instance=ExtResource("4_bqi6a")]
+layout_mode = 0
+
+[connection signal="pressed" from="VBoxContainer/reintentar" to="." method="_on_reintentar_pressed"]
 [connection signal="pressed" from="VBoxContainer/salir" to="." method="_on_salir_pressed"]
