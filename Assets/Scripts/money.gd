@@ -1,15 +1,12 @@
 extends Node2D
 
+signal coinCollected
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	add_to_group("Money")
 	$Area2D/AnimationPlayer.play("money")
 
-	
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
-
 func _on_area_2d_area_entered(area: Area2D) -> void:
+	print("Se detectó una colisión con el Area2D")
 	queue_free()
+	emit_signal("coinCollected")

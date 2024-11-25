@@ -7,6 +7,9 @@ extends Control
 @onready var bgcontainer = $paused/ColorRect
 @onready var questionsDie = $Questions
 @onready var counter : int
+@export var bomb_scene: PackedScene
+#<-----------------------
+
 func _ready() -> void:
 	pause.visible = false
 	fade.play("fade_in")
@@ -14,6 +17,9 @@ func _ready() -> void:
 	questionsDie.visible = false
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	
+	var bomb_instance = bomb_scene.instantiate()
+	add_child(bomb_instance)
+	bomb_instance.global_position = Vector2(randf_range(0, get_viewport_rect().size.x), 0)
 func _physics_process(delta: float) -> void:
 	buttons()
 

@@ -10,7 +10,7 @@ var buttons: Array[Button] = []
 @onready var fadequestion = $Node/ColorRect/AnimationPlayer
 @onready var question_label = $Node/question
 @onready var result_label = $Node/test
-
+var monedas : int
 func _ready() -> void:
 	for child in container_exit.get_children():
 		if child is Button:
@@ -23,7 +23,10 @@ func _ready() -> void:
 	fadequestion.play("fade_in")
 	randomize()
 	question()
-
+	monedas = 0
+	get_node("Node/CanvasLayer/counter").text = str(monedas)
+		
+	
 func _unhandled_input(event: InputEvent) -> void:
 	var focused_button: Node = get_viewport().gui_get_focus_owner()
 	var focused_index: int = buttons.find(focused_button)
@@ -192,7 +195,7 @@ func question() -> void:
 		$Node/VBoxContainer/d.text = "3/4 + 1/4?" 
 		
 	elif number_question == 21: 
-		question_label.text = "¿Qué es el valor de e (aproximadamente)?"
+		question_label.text = "¿Qué es el valor de euler (aproximadamente)?"
 		$Node/VBoxContainer/a.text = "2.18" 
 		$Node/VBoxContainer/b.text = "2.71" 
 		$Node/VBoxContainer/c.text = "3.14" 
@@ -230,185 +233,240 @@ func question() -> void:
 func responder() -> void:
 	if number_question == 0: 
 		if answer == 1:
-			result_label.text = "Correcta"
+			#result_label.text = "Correcta"
+			monedas += 1
+			get_node("Node/CanvasLayer/counter").text = str(monedas)
 		else:
 			result_label.text = "Incorrecta"
 			get_tree().change_scene_to_file("res://Assets/scenes/exitmatch.tscn")
 		
 	elif number_question == 1: 
 		if answer == 4:
-			result_label.text = "Correcta"
+			#result_label.text = "Correcta"
+			monedas += 1
+			get_node("Node/CanvasLayer/counter").text = str(monedas)
 		else:
 			result_label.text = "Incorrecta"
 			get_tree().change_scene_to_file("res://Assets/scenes/exitmatch.tscn")
 			
 	elif number_question == 2: 
 		if answer == 3:
-			result_label.text = "Correcta"
+			#result_label.text = "Correcta"
+			monedas += 1
+			get_node("Node/CanvasLayer/counter").text = str(monedas)
 		else:
 			result_label.text = "Incorrecta"
 			get_tree().change_scene_to_file("res://Assets/scenes/exitmatch.tscn")
 	
 	elif number_question == 3: 
 		if answer == 4:
-			result_label.text = "Correcta"
+			#result_label.text = "Correcta"
+			monedas += 1
+			get_node("Node/CanvasLayer/counter").text = str(monedas)
 		else:
 			result_label.text = "Incorrecta"
 			get_tree().change_scene_to_file("res://Assets/scenes/exitmatch.tscn")
 		
 	elif number_question == 4: 
 		if answer == 2:
-			result_label.text = "Correcta"
+			#result_label.text = "Correcta"
+			monedas += 1
+			get_node("Node/CanvasLayer/counter").text = str(monedas)
 		else:
 			result_label.text = "Incorrecta"
 			get_tree().change_scene_to_file("res://Assets/scenes/exitmatch.tscn")
 
 	elif number_question == 5: 
 		if answer == 3:
-			result_label.text = "Correcta"
+			#result_label.text = "Correcta"
+			monedas += 1
+			get_node("Node/CanvasLayer/counter").text = str(monedas)
 		else:
 			result_label.text = "Incorrecta"
 			get_tree().change_scene_to_file("res://Assets/scenes/exitmatch.tscn")
 	
 	elif number_question == 6: 
 		if answer == 3:
-			result_label.text = "Correcta"
+			#result_label.text = "Correcta"
+			monedas += 1
+			get_node("Node/CanvasLayer/counter").text = str(monedas)
 		else:
 			result_label.text = "Incorrecta"
 			get_tree().change_scene_to_file("res://Assets/scenes/exitmatch.tscn")
 		
 	elif number_question == 7: 
 		if answer == 1:
-			result_label.text = "Correcta"
+			#result_label.text = "Correcta"
+			monedas += 1
+			get_node("Node/CanvasLayer/counter").text = str(monedas)
 		else:
 			result_label.text = "Incorrecta"
 			get_tree().change_scene_to_file("res://Assets/scenes/exitmatch.tscn")
 			
 	elif number_question == 8: 
 		if answer == 1:
-			result_label.text = "Correcta"
+			#result_label.text = "Correcta"
+			monedas += 1
+			get_node("Node/CanvasLayer/counter").text = str(monedas)
 		else:
 			result_label.text = "Incorrecta"
 			get_tree().change_scene_to_file("res://Assets/scenes/exitmatch.tscn")
 			
 	elif number_question == 9: 
 		if answer == 3:
-			result_label.text = "Correcta"
+			#result_label.text = "Correcta"
+			monedas += 1
+			get_node("Node/CanvasLayer/counter").text = str(monedas)
 		else:
 			result_label.text = "Incorrecta"
 			get_tree().change_scene_to_file("res://Assets/scenes/exitmatch.tscn")
 	
 	elif number_question == 10: 
 		if answer == 2:
-			result_label.text = "Correcta"
+			#result_label.text = "Correcta"
+			monedas += 1
+			get_node("Node/CanvasLayer/counter").text = str(monedas)
 		else:
 			result_label.text = "Incorrecta"
 			get_tree().change_scene_to_file("res://Assets/scenes/exitmatch.tscn")
 	
 	elif number_question == 11: 
 		if answer == 3:
-			result_label.text = "Correcta"
+			#result_label.text = "Correcta"
+			monedas += 1
+			get_node("Node/CanvasLayer/counter").text = str(monedas)
 		else:
 			result_label.text = "Incorrecta"
 			get_tree().change_scene_to_file("res://Assets/scenes/exitmatch.tscn")
 	
 	elif number_question == 12: 
 		if answer == 2:
-			result_label.text = "Correcta"
+			#result_label.text = "Correcta"
+			monedas += 1
+			get_node("Node/CanvasLayer/counter").text = str(monedas)
 		else:
 			result_label.text = "Incorrecta"
 			get_tree().change_scene_to_file("res://Assets/scenes/exitmatch.tscn")
 	
 	elif number_question == 13: 
 		if answer == 3:
-			result_label.text = "Correcta"
+			#result_label.text = "Correcta"
+			monedas += 1
+			get_node("Node/CanvasLayer/counter").text = str(monedas)
 		else:
 			result_label.text = "Incorrecta"
 			get_tree().change_scene_to_file("res://Assets/scenes/exitmatch.tscn")
 			
 	elif number_question == 14: 
 		if answer == 4:
-			result_label.text = "Correcta"
+			#result_label.text = "Correcta"
+			monedas += 1
+			get_node("Node/CanvasLayer/counter").text = str(monedas)
 		else:
 			result_label.text = "Incorrecta"
 			get_tree().change_scene_to_file("res://Assets/scenes/exitmatch.tscn")
 			
 	elif number_question == 15: 
 		if answer == 3:
-			result_label.text = "Correcta"
+			#result_label.text = "Correcta"
+			monedas += 1
+			get_node("Node/CanvasLayer/counter").text = str(monedas)
 		else:
 			result_label.text = "Incorrecta"
+			monedas += 1
+			get_node("Node/CanvasLayer/counter").text = str(monedas)
 			get_tree().change_scene_to_file("res://Assets/scenes/exitmatch.tscn")
 			
 	elif number_question == 16: 
 		if answer == 2:
-			result_label.text = "Correcta"
+			#result_label.text = "Correcta"
+			monedas += 1
+			get_node("Node/CanvasLayer/counter").text = str(monedas)
 		else:
 			result_label.text = "Incorrecta"
 			get_tree().change_scene_to_file("res://Assets/scenes/exitmatch.tscn")
 	
 	elif number_question == 17: 
 		if answer == 4:
-			result_label.text = "Correcta"
+			#result_label.text = "Correcta"
+			monedas += 1
+			get_node("Node/CanvasLayer/counter").text = str(monedas)
 		else:
 			result_label.text = "Incorrecta"
 			get_tree().change_scene_to_file("res://Assets/scenes/exitmatch.tscn")
 	
 	elif number_question == 18: 
 		if answer == 1:
-			result_label.text = "Correcta"
+			#result_label.text = "Correcta"
+			monedas += 1
+			get_node("Node/CanvasLayer/counter").text = str(monedas)
 		else:
 			result_label.text = "Incorrecta"
 			get_tree().change_scene_to_file("res://Assets/scenes/exitmatch.tscn")
 			
 	elif number_question == 19: 
 		if answer == 2:
-			result_label.text = "Correcta"
+			#result_label.text = "Correcta"
+			monedas += 1
+			get_node("Node/CanvasLayer/counter").text = str(monedas)
 		else:
 			result_label.text = "Incorrecta"
 			get_tree().change_scene_to_file("res://Assets/scenes/exitmatch.tscn")
 	
 	elif number_question == 20: 
 		if answer == 2:
-			result_label.text = "Correcta"
+			#result_label.text = "Correcta"
+			monedas += 1
+			get_node("Node/CanvasLayer/counter").text = str(monedas)
 		else:
 			result_label.text = "Incorrecta"
 			get_tree().change_scene_to_file("res://Assets/scenes/exitmatch.tscn")
 			
 	elif number_question == 21: 
 		if answer == 1:
-			result_label.text = "Correcta"
+			#result_label.text = "Correcta"
+			monedas += 1
+			get_node("Node/CanvasLayer/counter").text = str(monedas)
 		else:
 			result_label.text = "Incorrecta"
 			get_tree().change_scene_to_file("res://Assets/scenes/exitmatch.tscn")
 			
 	elif number_question == 22: 
 		if answer == 4:
-			result_label.text = "Correcta"
+			#result_label.text = "Correcta"
+			monedas += 1
+			get_node("Node/CanvasLayer/counter").text = str(monedas)
 		else:
 			result_label.text = "Incorrecta"
 			get_tree().change_scene_to_file("res://Assets/scenes/exitmatch.tscn")
 			
 	elif number_question == 23: 
 		if answer == 4:
-			result_label.text = "Correcta"
+			#result_label.text = "Correcta"
+			monedas += 1
+			get_node("Node/CanvasLayer/counter").text = str(monedas)
 		else:
 			result_label.text = "Incorrecta"
 			get_tree().change_scene_to_file("res://Assets/scenes/exitmatch.tscn")
 	
 	elif number_question == 24: 
 		if answer == 2:
-			result_label.text = "Correcta"
+			#result_label.text = "Correcta"
+			monedas += 1
+			get_node("Node/CanvasLayer/counter").text = str(monedas)
 		else:
 			result_label.text = "Incorrecta"
 			get_tree().change_scene_to_file("res://Assets/scenes/exitmatch.tscn")
 	
 	elif number_question == 25: 
 		if answer == 2:
-			result_label.text = "Correcta"
+			#result_label.text = "Correcta"
+			monedas += 1
+			get_node("Node/CanvasLayer/counter").text = str(monedas)
 		else:
 			result_label.text = "Incorrecta"
 			get_tree().change_scene_to_file("res://Assets/scenes/exitmatch.tscn")
+
 			
 func _on_a_pressed() -> void:
 	answer = 1

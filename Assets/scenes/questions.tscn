@@ -1,12 +1,23 @@
-[gd_scene load_steps=12 format=3 uid="uid://d0eem5acl4iii"]
+[gd_scene load_steps=16 format=3 uid="uid://d0eem5acl4iii"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/questions.gd" id="1_7eds3"]
 [ext_resource type="FontFile" uid="uid://c7x58lu1meebs" path="res://Assets/fonts/Kenney Pixel.ttf" id="2_kysej"]
 [ext_resource type="PackedScene" uid="uid://bhpnwqi0kg7m8" path="res://Assets/scenes/fadequestion.tscn" id="3_v6e0x"]
+[ext_resource type="Texture2D" uid="uid://c7hhssxycp3va" path="res://Assets/resources/sprites/coin_gold.png" id="4_lvpqo"]
+[ext_resource type="FontFile" uid="uid://fhninvb0lu8k" path="res://Assets/fonts/Kenney Mini Square.ttf" id="5_dshka"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2ev4t"]
 bg_color = Color(1, 1, 1, 1)
 draw_center = false
+
+[sub_resource type="LabelSettings" id="LabelSettings_uxydb"]
+font = ExtResource("5_dshka")
+font_size = 32
+font_color = Color(0.921569, 0.219608, 0.427451, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_px7n7"]
+font_size = 33
+font_color = Color(0.921569, 0.219608, 0.427451, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ypylj"]
 bg_color = Color(0.964706, 0.337255, 0.568627, 1)
@@ -76,9 +87,9 @@ script = ExtResource("1_7eds3")
 [node name="Node" type="Node2D" parent="."]
 
 [node name="ColorRect2" type="ColorRect" parent="Node"]
-offset_right = 1038.0
-offset_bottom = 569.0
-color = Color(0.442513, 0.400851, 0.893747, 0.376471)
+offset_right = 1049.0
+offset_bottom = 574.0
+color = Color(0, 0, 0, 0.513726)
 
 [node name="question" type="RichTextLabel" parent="Node"]
 texture_filter = 1
@@ -103,6 +114,39 @@ offset_bottom = 485.0
 text = "
 "
 
+[node name="CanvasLayer" type="CanvasLayer" parent="Node"]
+
+[node name="CoinGold" type="Sprite2D" parent="Node/CanvasLayer"]
+modulate = Color(0.862745, 0.537255, 0.521569, 1)
+texture_filter = 1
+position = Vector2(36.5, 533)
+scale = Vector2(2.3125, 2.3125)
+texture = ExtResource("4_lvpqo")
+hframes = 8
+frame = 1
+
+[node name="score" type="Label" parent="Node/CanvasLayer"]
+offset_left = 56.5
+offset_top = 511.0
+offset_right = 172.5
+offset_bottom = 551.0
+theme_override_colors/font_color = Color(0.921569, 0.219608, 0.427451, 1)
+theme_override_colors/font_shadow_color = Color(0.921569, 0.219608, 0.427451, 1)
+text = "SCORE DIE :"
+label_settings = SubResource("LabelSettings_uxydb")
+metadata/_edit_use_anchors_ = true
+
+[node name="counter" type="Label" parent="Node/CanvasLayer"]
+texture_filter = 1
+offset_left = 238.5
+offset_top = 511.0
+offset_right = 410.5
+offset_bottom = 553.0
+theme_override_fonts/font = ExtResource("5_dshka")
+theme_override_font_sizes/font_size = 33
+label_settings = SubResource("LabelSettings_px7n7")
+metadata/_edit_use_anchors_ = true
+
 [node name="RichTextLabel" type="RichTextLabel" parent="Node"]
 texture_filter = 1
 offset_left = 9.0
@@ -113,8 +157,7 @@ theme_override_colors/default_color = Color(0.921569, 0.219608, 0.427451, 1)
 theme_override_fonts/normal_font = ExtResource("2_kysej")
 theme_override_font_sizes/normal_font_size = 90
 theme_override_styles/normal = SubResource("StyleBoxFlat_2ev4t")
-text = "RESPONDE Y SOBREVIVE!!!
-"
+text = "BIENVENIDO A TU PESADILLA!!!"
 scroll_active = false
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Node/RichTextLabel"]
@@ -128,11 +171,12 @@ theme_override_colors/default_color = Color(0.921569, 0.219608, 0.427451, 1)
 theme_override_fonts/normal_font = ExtResource("2_kysej")
 theme_override_font_sizes/normal_font_size = 90
 theme_override_styles/normal = SubResource("StyleBoxFlat_2ev4t")
-text = "RESPONDE Y SOBREVIVE!!!
+text = "BIENVENIDO A TU PESADILLA!!!
 "
 scroll_active = false
 
 [node name="ColorRect" parent="Node" instance=ExtResource("3_v6e0x")]
+visible = false
 
 [node name="RichTextLabel2" type="RichTextLabel" parent="Node"]
 texture_filter = 1

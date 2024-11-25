@@ -7,6 +7,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var sprite = $Sprite2D
 @onready var animated_sprite = $Sprite2D/AnimatedSprite2D
 @onready var area = $Area2D
+
 #<-----------------------
 
 func _ready() -> void:
@@ -50,7 +51,7 @@ func update_animations():
 		
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
-	if area.name == "Suelo": 
+	if area.name == "Suelo":  
 		var mundo = get_node("/root/Mundo") 
 		if mundo: mundo.on_character_fall()
 		

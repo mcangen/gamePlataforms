@@ -24,16 +24,16 @@ func _ready() -> void:
 	
 	# Escondemos el label, el slider y el botón de mute al inicio
 	info_label.visible = false
-	volume_slider.visible = false
-	mute_button.visible = false
+	#volume_slider.visible = false
+	#mute_button.visible = false
 	fade.play("fade_in")
 
 # Señales de los botones
 func _on_info_pressed() -> void:
-	info_label.text = "En un mundo de plataformas flotantes y desafíos sin fin,\n el jugador asume el papel de un aventurero intrépido que debe \n recolectar la mayor cantidad de monedas posible mientras \n esquiva peligros a cada paso.\n La misión parece sencilla, pero en este mundo, un solo error \n puede llevar a consecuencias inesperadas.\n Si el jugador cae, no es el final, sino el comienzo de una prueba\n en un reino misterioso similar al limbo, donde el tiempo y el espacio se \ndistorsionan. En este lugar sombrío, lleno de obstáculos y trampas ocultas, \nel jugador debe encontrar una puerta mística que es la única salida \na la realidad. Sin embargo, la puerta guarda un secreto:\nun acertijo matemático que debe ser resuelto para escapar.\n Si el jugador logra resolver el enigma, regresa al mundo de las plataformas\n con todas sus monedas, listo para continuar la búsqueda de riqueza.\n Pero si falla, el limbo no perdona; el aventurero se desvanecerá,\n perdiéndose para siempre en la oscuridad.\n ¿Hasta dónde llegarás? \n ¿Cuántas monedas podrás acumular antes de que el limbo intente atraparte?"
+	info_label.text = "En un mundo de plataformas flotantes y desafíos sin fin,\n el jugador asume el papel de un aventurero intrépido que debe \n recolectar la mayor cantidad de monedas posible mientras \n esquiva bombas a cada paso.\n La misión parece sencilla, pero en este mundo, un solo error \n puede llevar a consecuencias inesperadas.\n Si el jugador cae, no es el final, sino el comienzo de una prueba\nUnos acertijos matematicos que tanto lo atormentaba.\n El jugador en sus ultimas memorias recordara las matematicas\n llegando a un punto donde no dara para mas.\nla muerte no perdona; el aventurero se desvanecerá,\n perdiéndose para siempre en la oscuridad.\n ¿Hasta dónde llegarás? \n ¿Cuántas monedas podrás acumular antes de que las bombas fantasmales\n  intente tumbarte?"
 	info_label.visible = true
-	volume_slider.visible = false
-	mute_button.visible = false
+	#volume_slider.visible = false
+	#mute_button.visible = false
 
 func _on_volumen_pressed() -> void:
 	info_label.visible = false

@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bkhomsbxxw5vm"]
+[gd_scene load_steps=26 format=3 uid="uid://bkhomsbxxw5vm"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/start_game.gd" id="1_r5wa6"]
 [ext_resource type="Script" path="res://Assets/Scripts/parallax_background.gd" id="2_5nk02"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://cry57sc1o04n6" path="res://Assets/Backgrounds/tutorial/4.png" id="5_xtp77"]
 [ext_resource type="Texture2D" uid="uid://bgs652hx242a1" path="res://Assets/Backgrounds/tutorial/5.png" id="6_jf7ge"]
 [ext_resource type="PackedScene" uid="uid://dgkcsqoohvdre" path="res://Assets/scenes/mundo1/fade.tscn" id="12_ceg6y"]
+[ext_resource type="AudioStream" uid="uid://wtm6e0emtepw" path="res://Assets/resources/soundBg.mp3" id="13_t6piu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h6yfx"]
 bg_color = Color(0.964706, 0.337255, 0.568627, 1)
@@ -325,6 +326,11 @@ text = "MONEY PLATFORM
 libraries = {
 "": SubResource("AnimationLibrary_e5ko1")
 }
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("13_t6piu")
+volume_db = 20.0
+autoplay = true
 
 [connection signal="pressed" from="VBoxContainer/play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="VBoxContainer/options" to="." method="_on_options_pressed"]

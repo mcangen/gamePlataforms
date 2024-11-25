@@ -1,6 +1,6 @@
-[gd_scene load_steps=20 format=3 uid="uid://d1l0f2gyixvqf"]
+[gd_scene load_steps=22 format=3 uid="uid://d1l0f2gyixvqf"]
 
-[ext_resource type="Script" path="res://Assets/Scripts/level_1.gd" id="1_8xjep"]
+[ext_resource type="PackedScene" uid="uid://cgf41ilkqpb1o" path="res://Assets/scenes/bomb.tscn" id="1_ldtui"]
 [ext_resource type="PackedScene" uid="uid://b2ovpkf6jfoit" path="res://Assets/scenes/character.tscn" id="1_xo5wy"]
 [ext_resource type="Script" path="res://Assets/Scripts/parallax_background.gd" id="2_np3ih"]
 [ext_resource type="Texture2D" uid="uid://bgtsief7ebj1e" path="res://Assets/Backgrounds/mundo5/1.png" id="3_e6gsy"]
@@ -15,6 +15,85 @@
 [ext_resource type="PackedScene" uid="uid://qr8055ao6jme" path="res://Assets/scenes/mundo1/islandinit.tscn" id="12_7ttyk"]
 [ext_resource type="FontFile" uid="uid://fhninvb0lu8k" path="res://Assets/fonts/Kenney Mini Square.ttf" id="12_nudn1"]
 [ext_resource type="PackedScene" uid="uid://d0eem5acl4iii" path="res://Assets/scenes/questions.tscn" id="13_dp85g"]
+[ext_resource type="AudioStream" uid="uid://wtm6e0emtepw" path="res://Assets/resources/soundBg.mp3" id="16_yc2i0"]
+
+[sub_resource type="GDScript" id="GDScript_onc36"]
+resource_local_to_scene = true
+script/source = "extends Control
+
+@onready var fade = $ColorRect/AnimationPlayer
+@onready var pause = $paused 
+@onready var volver_button = $paused/VBoxContainer/volver
+@onready var container = $paused/VBoxContainer
+@onready var bgcontainer = $paused/ColorRect
+@onready var questionsDie = $Questions
+@onready var counter : int
+@export var bomb_scene: PackedScene
+#<-----------------------
+var monedas = 0
+
+func _ready() -> void:
+	pause.visible = false
+	fade.play(\"fade_in\")
+	$Islandinit/AnimatedSprite2D.play(\"disappear\")
+	questionsDie.visible = false
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	get_node(\"Questions/Node/CanvasLayer\").visible = false
+	
+func _physics_process(delta: float) -> void:
+	buttons()
+	
+	
+func buttons() -> void:
+	if Input.is_action_just_pressed(\"back\"): 
+		toggle_pause()
+	
+
+func toggle_pause() -> void:
+	get_tree().paused = not get_tree().paused
+	pause.visible = get_tree().paused
+	if get_tree().paused:
+		container.visible = true
+		bgcontainer.visible = true
+		volver_button.grab_focus() 
+	else:
+		pause.hide()
+		pause.visible = false
+
+func on_character_fall() -> void:
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	get_tree().paused = true
+	questionsDie.visible = true
+	get_node(\"Questions/Node/CanvasLayer\").visible = true
+	
+	questionsDie.grab_focus()
+	var focused_button: Node = get_viewport().gui_get_focus_owner()
+	var buttonss: Array[Button] = []
+	
+	for child in $Questions/Node/VBoxContainer.get_children():
+		if child is Button:
+			buttonss.append(child)
+			child.connect(\"pressed\", Callable(self, \"_on_button_pressed\"))
+
+	if buttonss.size() > 0:
+		buttonss[0].grab_focus()
+	
+  # Asegúrate de que la escena de preguntas tome el foco
+
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	on_character_fall()
+
+
+func _on_timer_timeout() -> void:
+	var bomb_instance = bomb_scene.instantiate()
+	add_child(bomb_instance)
+	bomb_instance.global_position = Vector2(randf_range(0, get_viewport_rect().size.x), 0)
+
+
+func _on_money_coin_collected() -> void:
+	monedas += 1
+	get_node(\"CanvasLayer/counter\").text = str(monedas)
+"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fg1fl"]
 size = Vector2(1040, 20)
@@ -22,16 +101,21 @@ size = Vector2(1040, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pbskb"]
 size = Vector2(22, 262)
 
-[sub_resource type="GDScript" id="GDScript_om271"]
-
 [sub_resource type="LabelSettings" id="LabelSettings_sj15o"]
 font = ExtResource("12_nudn1")
 font_size = 32
+font_color = Color(0.996078, 0.423529, 0.564706, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_2j1ib"]
+line_spacing = 36.0
+font_size = 36
+font_color = Color(0.996078, 0.423529, 0.564706, 1)
 
 [node name="Mundo" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-script = ExtResource("1_8xjep")
+script = SubResource("GDScript_onc36")
+bomb_scene = ExtResource("1_ldtui")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 script = ExtResource("2_np3ih")
@@ -83,24 +167,6 @@ position = Vector2(520.111, 278)
 scale = Vector2(1.80247, 1.80247)
 texture = ExtResource("6_nnxs7")
 
-[node name="Islandinit5" parent="ParallaxBackground/ParallaxLayer4" instance=ExtResource("12_7ttyk")]
-position = Vector2(-23, -303)
-
-[node name="Money" parent="ParallaxBackground/ParallaxLayer4/Islandinit5" instance=ExtResource("8_wp5im")]
-position = Vector2(-342, 217)
-
-[node name="Islandinit3" parent="ParallaxBackground/ParallaxLayer4" instance=ExtResource("12_7ttyk")]
-position = Vector2(520, -245)
-
-[node name="Money" parent="ParallaxBackground/ParallaxLayer4/Islandinit3" instance=ExtResource("8_wp5im")]
-position = Vector2(-180, 188)
-
-[node name="Islandinit4" parent="ParallaxBackground/ParallaxLayer4" instance=ExtResource("12_7ttyk")]
-position = Vector2(835, -243)
-
-[node name="Money" parent="ParallaxBackground/ParallaxLayer4/Islandinit4" instance=ExtResource("8_wp5im")]
-position = Vector2(-1045, 127)
-
 [node name="ParallaxLayer5" type="ParallaxLayer" parent="ParallaxBackground"]
 texture_filter = 1
 motion_scale = Vector2(1.5, 1.5)
@@ -111,55 +177,6 @@ texture_filter = 1
 position = Vector2(521, 278.5)
 scale = Vector2(1.80556, 1.80556)
 texture = ExtResource("7_j2bl1")
-
-[node name="Islandinit5" parent="ParallaxBackground/ParallaxLayer5" instance=ExtResource("12_7ttyk")]
-position = Vector2(807, -86)
-
-[node name="Money" parent="ParallaxBackground/ParallaxLayer5/Islandinit5" instance=ExtResource("8_wp5im")]
-position = Vector2(-430, 182)
-
-[node name="Islandinit4" parent="ParallaxBackground/ParallaxLayer5" instance=ExtResource("12_7ttyk")]
-visible = false
-position = Vector2(517, -69)
-
-[node name="Money" parent="ParallaxBackground/ParallaxLayer5/Islandinit4" instance=ExtResource("8_wp5im")]
-visible = false
-
-[node name="Islandinit3" parent="ParallaxBackground/ParallaxLayer5" instance=ExtResource("12_7ttyk")]
-position = Vector2(350, -146)
-
-[node name="Money" parent="ParallaxBackground/ParallaxLayer5/Islandinit3" instance=ExtResource("8_wp5im")]
-position = Vector2(271, 247)
-
-[node name="Islandinit2" parent="ParallaxBackground/ParallaxLayer5" instance=ExtResource("12_7ttyk")]
-position = Vector2(179, -98)
-
-[node name="Money" parent="ParallaxBackground/ParallaxLayer5/Islandinit2" instance=ExtResource("8_wp5im")]
-position = Vector2(-12, 150)
-
-[node name="Islandinit2" parent="ParallaxBackground/ParallaxLayer5/Islandinit2" instance=ExtResource("12_7ttyk")]
-position = Vector2(-363, -175)
-
-[node name="Money" parent="ParallaxBackground/ParallaxLayer5/Islandinit2/Islandinit2" instance=ExtResource("8_wp5im")]
-position = Vector2(192, 365)
-
-[node name="Islandinit6" parent="ParallaxBackground/ParallaxLayer5" instance=ExtResource("12_7ttyk")]
-position = Vector2(555, -97)
-
-[node name="Money" parent="ParallaxBackground/ParallaxLayer5/Islandinit6" instance=ExtResource("8_wp5im")]
-position = Vector2(-864, 507)
-
-[node name="Islandinit8" parent="ParallaxBackground/ParallaxLayer5" instance=ExtResource("12_7ttyk")]
-position = Vector2(-446, -243)
-
-[node name="Money" parent="ParallaxBackground/ParallaxLayer5/Islandinit8" instance=ExtResource("8_wp5im")]
-position = Vector2(192, 365)
-
-[node name="Islandinit7" parent="ParallaxBackground/ParallaxLayer5" instance=ExtResource("12_7ttyk")]
-position = Vector2(-83, -68)
-
-[node name="Money" parent="ParallaxBackground/ParallaxLayer5/Islandinit7" instance=ExtResource("8_wp5im")]
-position = Vector2(-258, 438)
 
 [node name="AnimatableBody2D" type="AnimatableBody2D" parent="."]
 position = Vector2(68, 529)
@@ -179,17 +196,11 @@ position = Vector2(983, -27)
 shape = SubResource("RectangleShape2D_pbskb")
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_xo5wy")]
-position = Vector2(392, 472)
+position = Vector2(428, 472)
 
-[node name="Control" type="Control" parent="."]
-anchors_preset = 0
-offset_left = -30.0
-offset_top = -2.0
-offset_right = 10.0
-offset_bottom = 38.0
-script = SubResource("GDScript_om271")
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="CoinGold" type="Sprite2D" parent="Control"]
+[node name="CoinGold" type="Sprite2D" parent="CanvasLayer"]
 texture_filter = 1
 position = Vector2(856, 31)
 scale = Vector2(2.3125, 2.3125)
@@ -197,8 +208,7 @@ texture = ExtResource("11_qpdgy")
 hframes = 8
 frame = 1
 
-[node name="score" type="Label" parent="Control"]
-layout_mode = 0
+[node name="score" type="Label" parent="CanvasLayer"]
 offset_left = 876.0
 offset_top = 9.0
 offset_right = 992.0
@@ -206,9 +216,8 @@ offset_bottom = 49.0
 text = "SCORE :"
 label_settings = SubResource("LabelSettings_sj15o")
 
-[node name="counter" type="Label" parent="Control"]
+[node name="counter" type="Label" parent="CanvasLayer"]
 texture_filter = 1
-layout_mode = 0
 offset_left = 998.0
 offset_top = 7.0
 offset_right = 1170.0
@@ -216,6 +225,7 @@ offset_bottom = 49.0
 theme_override_fonts/font = ExtResource("12_nudn1")
 theme_override_font_sizes/font_size = 33
 text = "0"
+label_settings = SubResource("LabelSettings_2j1ib")
 
 [node name="ColorRect" parent="." instance=ExtResource("5_5x75c")]
 visible = false
@@ -229,7 +239,89 @@ visible = false
 [node name="Islandinit" parent="." instance=ExtResource("12_7ttyk")]
 position = Vector2(40, -45)
 
+[node name="ParallaxBackground2" type="ParallaxBackground" parent="."]
+script = ExtResource("2_np3ih")
+velocidad = 20
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground2"]
+texture_filter = 1
+motion_scale = Vector2(0, 0)
+motion_mirroring = Vector2(1040, 0)
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground2"]
+texture_filter = 1
+position = Vector2(-367, 4)
+motion_scale = Vector2(0.01, 0.01)
+motion_mirroring = Vector2(1040, 0)
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground2"]
+texture_filter = 1
+motion_scale = Vector2(0.4, 0.4)
+motion_mirroring = Vector2(1040, 0)
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground2"]
+texture_filter = 1
+motion_scale = Vector2(1.2, 1.2)
+motion_mirroring = Vector2(1040, 0)
+
+[node name="ParallaxLayer5" type="ParallaxLayer" parent="ParallaxBackground2"]
+texture_filter = 1
+motion_scale = Vector2(4, 4)
+motion_mirroring = Vector2(1040, 0)
+
+[node name="Islandinit" parent="ParallaxBackground2/ParallaxLayer5" instance=ExtResource("12_7ttyk")]
+position = Vector2(298, -136)
+
+[node name="Money" parent="ParallaxBackground2/ParallaxLayer5/Islandinit" instance=ExtResource("8_wp5im")]
+position = Vector2(-182, 185)
+
+[node name="Islandinit2" parent="ParallaxBackground2/ParallaxLayer5" instance=ExtResource("12_7ttyk")]
+position = Vector2(458, -161)
+
+[node name="Money" parent="ParallaxBackground2/ParallaxLayer5/Islandinit2" instance=ExtResource("8_wp5im")]
+position = Vector2(-182, 185)
+
+[node name="Islandinit3" parent="ParallaxBackground2/ParallaxLayer5" instance=ExtResource("12_7ttyk")]
+position = Vector2(628, -66)
+
+[node name="Money" parent="ParallaxBackground2/ParallaxLayer5/Islandinit3" instance=ExtResource("8_wp5im")]
+position = Vector2(-182, 185)
+
+[node name="Islandinit4" parent="ParallaxBackground2/ParallaxLayer5" instance=ExtResource("12_7ttyk")]
+position = Vector2(806, -19)
+
+[node name="Money" parent="ParallaxBackground2/ParallaxLayer5/Islandinit4" instance=ExtResource("8_wp5im")]
+position = Vector2(-182, 185)
+
+[node name="Islandinit5" parent="ParallaxBackground2/ParallaxLayer5" instance=ExtResource("12_7ttyk")]
+position = Vector2(-76, -74)
+
+[node name="Money" parent="ParallaxBackground2/ParallaxLayer5/Islandinit5" instance=ExtResource("8_wp5im")]
+position = Vector2(-182, 185)
+
+[node name="Islandinit6" parent="ParallaxBackground2/ParallaxLayer5" instance=ExtResource("12_7ttyk")]
+position = Vector2(185, -80)
+
+[node name="Money" parent="ParallaxBackground2/ParallaxLayer5/Islandinit6" instance=ExtResource("8_wp5im")]
+position = Vector2(-182, 185)
+
 [node name="Questions" parent="." instance=ExtResource("13_dp85g")]
 visible = false
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.5
+autostart = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("16_yc2i0")
+volume_db = 15.0
+autoplay = true
+
 [connection signal="area_entered" from="AnimatableBody2D/Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="coinCollected" from="ParallaxBackground2/ParallaxLayer5/Islandinit/Money" to="." method="_on_money_coin_collected"]
+[connection signal="coinCollected" from="ParallaxBackground2/ParallaxLayer5/Islandinit2/Money" to="." method="_on_money_coin_collected"]
+[connection signal="coinCollected" from="ParallaxBackground2/ParallaxLayer5/Islandinit3/Money" to="." method="_on_money_coin_collected"]
+[connection signal="coinCollected" from="ParallaxBackground2/ParallaxLayer5/Islandinit4/Money" to="." method="_on_money_coin_collected"]
+[connection signal="coinCollected" from="ParallaxBackground2/ParallaxLayer5/Islandinit5/Money" to="." method="_on_money_coin_collected"]
+[connection signal="coinCollected" from="ParallaxBackground2/ParallaxLayer5/Islandinit6/Money" to="." method="_on_money_coin_collected"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
