@@ -5,6 +5,8 @@
 
 Game Plataform es un juego donde el objetivo es alcanzar la mayor cantidad de monedas posibles o enfrentarse ante problemas matematicos, donde el jugador estara muerto y a la vez vivo.
 
+![JuegoImage](https://i.postimg.cc/J0qB8L6Q/Blue-Illustration-Game-Presentation-3.jpg)
+
 # CONTENIDO
 ## - Configuracion de controles
 ![Juego](https://i.postimg.cc/nzBK9Nzy/Blue-Illustration-Game-Presentation-2.jpg)
