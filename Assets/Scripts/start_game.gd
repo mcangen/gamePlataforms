@@ -8,6 +8,7 @@ func _process(delta: float) -> void:
 	exit()
 	
 func _ready() -> void:
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	fade.play("fade_in")
 	# Agregamos manualmente todos los hijos de VBoxContainer que son botones a la lista
 	for child in $VBoxContainer.get_children():

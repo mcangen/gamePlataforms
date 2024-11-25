@@ -13,6 +13,7 @@ func _process(delta: float) -> void:
 	back()
 func _ready() -> void:
 	# Agregamos manualmente todos los hijos de VBoxContainer que son botones a la lista
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	for child in $VBoxContainer.get_children():
 		if child is Button and child.name != "muteButton":
 			buttons.append(child)

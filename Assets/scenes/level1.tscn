@@ -1,24 +1,28 @@
-[gd_scene load_steps=17 format=3 uid="uid://d1l0f2gyixvqf"]
+[gd_scene load_steps=20 format=3 uid="uid://d1l0f2gyixvqf"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/level_1.gd" id="1_8xjep"]
 [ext_resource type="PackedScene" uid="uid://b2ovpkf6jfoit" path="res://Assets/scenes/character.tscn" id="1_xo5wy"]
 [ext_resource type="Script" path="res://Assets/Scripts/parallax_background.gd" id="2_np3ih"]
 [ext_resource type="Texture2D" uid="uid://bgtsief7ebj1e" path="res://Assets/Backgrounds/mundo5/1.png" id="3_e6gsy"]
 [ext_resource type="Texture2D" uid="uid://cswmbxjc8xfc0" path="res://Assets/Backgrounds/mundo5/2.png" id="4_3segq"]
-[ext_resource type="PackedScene" uid="uid://cwpqxhi3dkyw" path="res://Assets/scenes/mundo1/island.tscn" id="4_7wpax"]
 [ext_resource type="PackedScene" uid="uid://dgkcsqoohvdre" path="res://Assets/scenes/mundo1/fade.tscn" id="5_5x75c"]
 [ext_resource type="Texture2D" uid="uid://bodadubxr0gxl" path="res://Assets/Backgrounds/mundo5/3.png" id="5_7gvcc"]
 [ext_resource type="PackedScene" uid="uid://dv7jkpxl5h175" path="res://Assets/scenes/mundo1/paused.tscn" id="6_2k75q"]
 [ext_resource type="Texture2D" uid="uid://cry57sc1o04n6" path="res://Assets/Backgrounds/tutorial/4.png" id="6_nnxs7"]
 [ext_resource type="Texture2D" uid="uid://bgs652hx242a1" path="res://Assets/Backgrounds/tutorial/5.png" id="7_j2bl1"]
+[ext_resource type="PackedScene" uid="uid://ckvu03r1r8lbp" path="res://Assets/scenes/money.tscn" id="8_wp5im"]
+[ext_resource type="Texture2D" uid="uid://c7hhssxycp3va" path="res://Assets/resources/sprites/coin_gold.png" id="11_qpdgy"]
+[ext_resource type="PackedScene" uid="uid://qr8055ao6jme" path="res://Assets/scenes/mundo1/islandinit.tscn" id="12_7ttyk"]
 [ext_resource type="FontFile" uid="uid://fhninvb0lu8k" path="res://Assets/fonts/Kenney Mini Square.ttf" id="12_nudn1"]
-[ext_resource type="Script" path="res://Assets/Scripts/island_spawner.gd" id="12_vhxcc"]
+[ext_resource type="PackedScene" uid="uid://d0eem5acl4iii" path="res://Assets/scenes/questions.tscn" id="13_dp85g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fg1fl"]
 size = Vector2(1040, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pbskb"]
 size = Vector2(22, 262)
+
+[sub_resource type="GDScript" id="GDScript_om271"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_sj15o"]
 font = ExtResource("12_nudn1")
@@ -79,6 +83,24 @@ position = Vector2(520.111, 278)
 scale = Vector2(1.80247, 1.80247)
 texture = ExtResource("6_nnxs7")
 
+[node name="Islandinit5" parent="ParallaxBackground/ParallaxLayer4" instance=ExtResource("12_7ttyk")]
+position = Vector2(-23, -303)
+
+[node name="Money" parent="ParallaxBackground/ParallaxLayer4/Islandinit5" instance=ExtResource("8_wp5im")]
+position = Vector2(-342, 217)
+
+[node name="Islandinit3" parent="ParallaxBackground/ParallaxLayer4" instance=ExtResource("12_7ttyk")]
+position = Vector2(520, -245)
+
+[node name="Money" parent="ParallaxBackground/ParallaxLayer4/Islandinit3" instance=ExtResource("8_wp5im")]
+position = Vector2(-180, 188)
+
+[node name="Islandinit4" parent="ParallaxBackground/ParallaxLayer4" instance=ExtResource("12_7ttyk")]
+position = Vector2(835, -243)
+
+[node name="Money" parent="ParallaxBackground/ParallaxLayer4/Islandinit4" instance=ExtResource("8_wp5im")]
+position = Vector2(-1045, 127)
+
 [node name="ParallaxLayer5" type="ParallaxLayer" parent="ParallaxBackground"]
 texture_filter = 1
 motion_scale = Vector2(1.5, 1.5)
@@ -90,13 +112,62 @@ position = Vector2(521, 278.5)
 scale = Vector2(1.80556, 1.80556)
 texture = ExtResource("7_j2bl1")
 
+[node name="Islandinit5" parent="ParallaxBackground/ParallaxLayer5" instance=ExtResource("12_7ttyk")]
+position = Vector2(807, -86)
+
+[node name="Money" parent="ParallaxBackground/ParallaxLayer5/Islandinit5" instance=ExtResource("8_wp5im")]
+position = Vector2(-430, 182)
+
+[node name="Islandinit4" parent="ParallaxBackground/ParallaxLayer5" instance=ExtResource("12_7ttyk")]
+visible = false
+position = Vector2(517, -69)
+
+[node name="Money" parent="ParallaxBackground/ParallaxLayer5/Islandinit4" instance=ExtResource("8_wp5im")]
+visible = false
+
+[node name="Islandinit3" parent="ParallaxBackground/ParallaxLayer5" instance=ExtResource("12_7ttyk")]
+position = Vector2(350, -146)
+
+[node name="Money" parent="ParallaxBackground/ParallaxLayer5/Islandinit3" instance=ExtResource("8_wp5im")]
+position = Vector2(271, 247)
+
+[node name="Islandinit2" parent="ParallaxBackground/ParallaxLayer5" instance=ExtResource("12_7ttyk")]
+position = Vector2(179, -98)
+
+[node name="Money" parent="ParallaxBackground/ParallaxLayer5/Islandinit2" instance=ExtResource("8_wp5im")]
+position = Vector2(-12, 150)
+
+[node name="Islandinit2" parent="ParallaxBackground/ParallaxLayer5/Islandinit2" instance=ExtResource("12_7ttyk")]
+position = Vector2(-363, -175)
+
+[node name="Money" parent="ParallaxBackground/ParallaxLayer5/Islandinit2/Islandinit2" instance=ExtResource("8_wp5im")]
+position = Vector2(192, 365)
+
+[node name="Islandinit6" parent="ParallaxBackground/ParallaxLayer5" instance=ExtResource("12_7ttyk")]
+position = Vector2(555, -97)
+
+[node name="Money" parent="ParallaxBackground/ParallaxLayer5/Islandinit6" instance=ExtResource("8_wp5im")]
+position = Vector2(-864, 507)
+
+[node name="Islandinit8" parent="ParallaxBackground/ParallaxLayer5" instance=ExtResource("12_7ttyk")]
+position = Vector2(-446, -243)
+
+[node name="Money" parent="ParallaxBackground/ParallaxLayer5/Islandinit8" instance=ExtResource("8_wp5im")]
+position = Vector2(192, 365)
+
+[node name="Islandinit7" parent="ParallaxBackground/ParallaxLayer5" instance=ExtResource("12_7ttyk")]
+position = Vector2(-83, -68)
+
+[node name="Money" parent="ParallaxBackground/ParallaxLayer5/Islandinit7" instance=ExtResource("8_wp5im")]
+position = Vector2(-258, 438)
+
 [node name="AnimatableBody2D" type="AnimatableBody2D" parent="."]
 position = Vector2(68, 529)
 
-[node name="Sprite2D" type="Sprite2D" parent="AnimatableBody2D"]
+[node name="Area2D" type="Area2D" parent="AnimatableBody2D"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D"]
-position = Vector2(460, 98)
+[node name="Suelo" type="CollisionShape2D" parent="AnimatableBody2D/Area2D"]
+position = Vector2(453, 124)
 shape = SubResource("RectangleShape2D_fg1fl")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="AnimatableBody2D"]
@@ -108,16 +179,43 @@ position = Vector2(983, -27)
 shape = SubResource("RectangleShape2D_pbskb")
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_xo5wy")]
-position = Vector2(382, 472)
+position = Vector2(392, 472)
 
-[node name="Label" type="Label" parent="."]
+[node name="Control" type="Control" parent="."]
+anchors_preset = 0
+offset_left = -30.0
+offset_top = -2.0
+offset_right = 10.0
+offset_bottom = 38.0
+script = SubResource("GDScript_om271")
+
+[node name="CoinGold" type="Sprite2D" parent="Control"]
+texture_filter = 1
+position = Vector2(856, 31)
+scale = Vector2(2.3125, 2.3125)
+texture = ExtResource("11_qpdgy")
+hframes = 8
+frame = 1
+
+[node name="score" type="Label" parent="Control"]
 layout_mode = 0
-offset_left = 888.0
+offset_left = 876.0
 offset_top = 9.0
-offset_right = 1004.0
+offset_right = 992.0
 offset_bottom = 49.0
 text = "SCORE :"
 label_settings = SubResource("LabelSettings_sj15o")
+
+[node name="counter" type="Label" parent="Control"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 998.0
+offset_top = 7.0
+offset_right = 1170.0
+offset_bottom = 49.0
+theme_override_fonts/font = ExtResource("12_nudn1")
+theme_override_font_sizes/font_size = 33
+text = "0"
 
 [node name="ColorRect" parent="." instance=ExtResource("5_5x75c")]
 visible = false
@@ -128,8 +226,10 @@ offset_right = 1040.0
 [node name="paused" parent="." instance=ExtResource("6_2k75q")]
 visible = false
 
-[node name="IslandSpawner" type="Node2D" parent="."]
-script = ExtResource("12_vhxcc")
-island_scene = ExtResource("4_7wpax")
+[node name="Islandinit" parent="." instance=ExtResource("12_7ttyk")]
+position = Vector2(40, -45)
 
-[node name="Island" parent="IslandSpawner" instance=ExtResource("4_7wpax")]
+[node name="Questions" parent="." instance=ExtResource("13_dp85g")]
+visible = false
+
+[connection signal="area_entered" from="AnimatableBody2D/Area2D" to="." method="_on_area_2d_area_entered"]

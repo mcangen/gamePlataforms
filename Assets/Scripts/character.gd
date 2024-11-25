@@ -6,7 +6,16 @@ var is_facing_right = true
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var sprite = $Sprite2D
 @onready var animated_sprite = $Sprite2D/AnimatedSprite2D
-#<>
+@onready var area = $Area2D
+#<-----------------------
+
+func _ready() -> void:
+	area.connect("area_entered", Callable(self, "_on_area_entered"))
+
+#func _on_area_entered(area: Area2D) -> void: 
+	#if area.name == "Suelo": 
+		#get_node("res://Assets/scenes/level1.tscn").on_character_fall()
+		
 func _physics_process(delta):
 	move_x()
 	flip()
@@ -39,4 +48,9 @@ func update_animations():
 	else:
 		animated_sprite.play("idle")
 		
-	
+
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	if area.name == "Suelo": 
+		var mundo = get_node("/root/Mundo") 
+		if mundo: mundo.on_character_fall()
+		

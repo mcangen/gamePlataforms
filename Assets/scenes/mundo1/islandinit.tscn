@@ -1,17 +1,16 @@
-[gd_scene load_steps=9 format=3 uid="uid://cwpqxhi3dkyw"]
+[gd_scene load_steps=8 format=3 uid="uid://qr8055ao6jme"]
 
-[ext_resource type="Script" path="res://Assets/Scripts/island.gd" id="1_pywi4"]
-[ext_resource type="Texture2D" uid="uid://2dhc0i5dt0cg" path="res://Assets/resources/sprites/floatingIslands/islands_0.png" id="2_crf2j"]
-[ext_resource type="Texture2D" uid="uid://3st7hdury1l7" path="res://Assets/resources/sprites/floatingIslands/islands_1.png" id="3_trlhm"]
+[ext_resource type="Texture2D" uid="uid://2dhc0i5dt0cg" path="res://Assets/resources/sprites/floatingIslands/islands_0.png" id="2_al41f"]
+[ext_resource type="Texture2D" uid="uid://3st7hdury1l7" path="res://Assets/resources/sprites/floatingIslands/islands_1.png" id="3_2kocn"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_2qn0e"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_crf2j")
+"texture": ExtResource("2_al41f")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_trlhm")
+"texture": ExtResource("3_2kocn")
 }],
 "loop": true,
 "name": &"disapear",
@@ -57,20 +56,21 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_05utq"]
-size = Vector2(98, 101)
+size = Vector2(82, 11)
 
-[node name="Island" type="StaticBody2D"]
-script = ExtResource("1_pywi4")
+[node name="Islandinit" type="StaticBody2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(113, 567)
-texture = ExtResource("2_crf2j")
+position = Vector2(120.5, 585.5)
+scale = Vector2(0.71875, 0.71875)
+texture = ExtResource("2_al41f")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(113, 567)
+position = Vector2(121, 587)
+scale = Vector2(0.73125, 0.73125)
 sprite_frames = SubResource("SpriteFrames_2qn0e")
 animation = &"disapear"
-frame_progress = 0.238094
+frame_progress = 0.552822
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("")
@@ -79,9 +79,5 @@ libraries = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(113, 553.5)
+position = Vector2(121, 548.5)
 shape = SubResource("RectangleShape2D_05utq")
-
-[node name="LifeTimer" type="Timer" parent="."]
-wait_time = 3.0
-one_shot = true

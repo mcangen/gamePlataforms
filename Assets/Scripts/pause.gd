@@ -7,6 +7,7 @@ var buttons: Array[Button] = []
 @onready var bgcontainer = $ColorRect 
 
 func _ready() -> void:
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	for child in $VBoxContainer.get_children():
 		if child is Button:
 			buttons.append(child)

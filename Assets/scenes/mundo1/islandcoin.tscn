@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://cwpqxhi3dkyw"]
+
+[ext_resource type="Script" path="res://Assets/Scripts/island.gd" id="1_pywi4"]
+[ext_resource type="Texture2D" uid="uid://2dhc0i5dt0cg" path="res://Assets/resources/sprites/floatingIslands/islands_0.png" id="2_crf2j"]
+[ext_resource type="Texture2D" uid="uid://3st7hdury1l7" path="res://Assets/resources/sprites/floatingIslands/islands_1.png" id="3_trlhm"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2qn0e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_crf2j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_trlhm")
+}],
+"loop": true,
+"name": &"disapear",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_05utq"]
+size = Vector2(98, 101)
+
+[node name="Island" type="StaticBody2D"]
+script = ExtResource("1_pywi4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(113, 567)
+texture = ExtResource("2_crf2j")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(113, 567)
+sprite_frames = SubResource("SpriteFrames_2qn0e")
+animation = &"disapear"
+frame_progress = 0.238094
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(113, 553.5)
+shape = SubResource("RectangleShape2D_05utq")

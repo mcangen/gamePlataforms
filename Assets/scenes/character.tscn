@@ -6,6 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://bmgcc35cxclfp" path="res://Assets/characters/men1/Run.png" id="4_yh403"]
 [ext_resource type="Texture2D" uid="uid://buxd8511pl34h" path="res://Assets/characters/men1/Walk.png" id="5_ej6gp"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_00t4h"]
+size = Vector2(53.5, 68.5)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_7psri"]
 atlas = ExtResource("3_q2vyl")
 region = Rect2(0, 0, 128, 128)
@@ -239,16 +242,16 @@ animations = [{
 "speed": 11.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_00t4h"]
-size = Vector2(53.5, 68.5)
-
 [node name="CharacterBody2D" type="CharacterBody2D"]
 texture_filter = 1
 position = Vector2(398, 475)
 script = ExtResource("1_tp5xr")
 move_speed = 160.0
 jump_speed = 400.0
-metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-277, -12)
+shape = SubResource("RectangleShape2D_00t4h")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -259,6 +262,10 @@ hframes = 6
 sprite_frames = SubResource("SpriteFrames_oro0f")
 animation = &"run"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-276.75, -11.25)
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-276.75, -12.25)
 shape = SubResource("RectangleShape2D_00t4h")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

@@ -51,6 +51,7 @@ font_size = 80
 font_color = Color(0.560607, 0.00387626, 0.954685, 1)
 
 [node name="Exitmatch" type="Control"]
+process_mode = 3
 texture_filter = 1
 layout_mode = 3
 anchors_preset = 15
@@ -184,6 +185,7 @@ label_settings = SubResource("LabelSettings_qdhxt")
 
 [node name="Label" type="Label" parent="Label"]
 texture_filter = 1
+layout_mode = 0
 offset_left = 4.0
 offset_top = 4.0
 offset_right = 424.0
@@ -193,6 +195,8 @@ label_settings = SubResource("LabelSettings_qdhxt")
 
 [node name="ColorRect" parent="." instance=ExtResource("4_bqi6a")]
 layout_mode = 0
+offset_left = 0.0
+offset_right = 1040.0
 
 [connection signal="pressed" from="VBoxContainer/reintentar" to="." method="_on_reintentar_pressed"]
 [connection signal="pressed" from="VBoxContainer/salir" to="." method="_on_salir_pressed"]
