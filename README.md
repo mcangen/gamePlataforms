@@ -7,8 +7,8 @@ Game Plataform es un juego donde el objetivo es alcanzar la mayor cantidad de mo
 
 # CONTENIDO
 ## - Configuracion de controles
-![Juego](https://i.ibb.co/PT5zd7z/Blue-Illustration-Game-Presentation-2.jpg)
-## - [Instalación]([#](https://github.com/mcangen/gamePlataforms/releases/tag/v1.0-alpha))
+![Juego](https://i.postimg.cc/nzBK9Nzy/Blue-Illustration-Game-Presentation-2.jpg)
+## - [Instalación](https://github.com/mcangen/gamePlataforms/releases/tag/v1.0-alpha)
 ## - [Mando Utilizado](https://github.com/mcangen/ElectronicMando)
 ## - [Sitio Web](#)
 
